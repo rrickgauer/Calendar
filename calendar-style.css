@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+
+   .table td {
+      vertical-align: middle;
+   }
+
+   ion-icon.icon-class {
+      font-size: 30px;
+   }
+
+}

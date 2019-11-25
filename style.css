@@ -1,0 +1,212 @@
+.hover-blue:hover {
+   color: #0092ca;
+   cursor: pointer;
+}
+
+.custom-bg-dark {
+   background-color: #222831 !important;
+}
+
+.custom-bg-grey {
+   background-color: #393E46 !important;
+}
+
+.custom-bg-blue {
+   background-color: #0092CA !important;
+}
+
+.custom-bg-white {
+   background-color: #EEEEEE !important;
+}
+
+.custom-text-dark {
+   color: #222831 !important;
+}
+
+.custom-text-grey {
+   color: #393E46 !important;
+}
+
+.custom-text-blue {
+   color: #0092CA !important;
+}
+
+.custom-text-white {
+   color: #EEEEEE !important;
+}
+
+.card-header {
+   background-color: #393E46 !important;
+   color: #EEEEEE !important;
+}
+
+.card {
+   margin-top: 10px !important;
+}
+
+a.nav-link {
+   color: #0092CA !important;
+}
+
+.navbar {
+   margin-bottom: 5px;
+}
+
+.btn-primary {
+   background-color: #0092CA !important;
+}
+
+.btn-primary:hover {
+   background-color: #006e99 !important;
+}
+
+.btn-primary-selected {
+   background-color: #006e99 !important;
+}
+
+.btn-light {
+   background-color: #EEEEEE !important;
+}
+
+.btn-light {
+   background-color: #EEEEEE !important;
+}
+
+a {
+   color: #0092CA;
+}
+
+.badge-primary {
+   background-color: #0092CA;
+}
+
+.navlink:active {
+   background-color: #393E46 !important;
+}
+
+.nav-link-hover:hover {
+   background-color: #393E46;
+}
+
+#top-navbar {
+   background-color: #222831 !important;
+}
+
+.class-info-table {
+   background-color: #EEEEEE;
+   margin-bottom: 0;
+}
+
+.class-info-table tr, th, td {
+   border-color: black !important;
+}
+
+.class-info-card {
+   padding: 0;
+}
+
+
+.text-line {
+   text-decoration: line-through;
+   color: #a6a6a6;
+}
+
+.todo-item-close {
+   cursor: pointer;
+}
+
+.table-custom tr:nth-child(even) {
+   /* background-color: #f0f2f5; */
+}
+
+#todo-list-card-body {
+   margin: 0;
+   padding: 0;
+}
+
+#todo-list {
+   margin: 0;
+}
+
+#todo-list-section {}
+
+.section-border-line {
+   border-style: solid;
+   border-bottom-width: 1px;
+   border-color: #393e46;
+   background-color: inherit;
+}
+
+#add-item {
+   padding: 20px;
+}
+
+#list-calendar-table th {
+   background-color: #393e46;
+   color: #eeeeee;
+}
+
+.badge-assignment {
+   background-color: blue;
+   color: white;
+}
+
+.badge-exam {
+   background-color: red;
+   color: white;
+}
+
+.badge-project {
+   background-color: lime;
+}
+
+.badge-quiz {
+   background-color: yellow;
+}
+
+.badge-other {
+   background-color: silver;
+}
+
+.pointer:hover {
+   /* display: block; */
+   cursor: pointer;
+}
+
+td.pointer:hover {
+   cursor: pointer;
+}
+
+.modal-header {
+   background-color: #393e46 !important;
+}
+
+.modal-body, .modal-footer {
+   background-color: #eeeeee !important;
+}
+
+.modal form {
+   margin: 15px;
+}
+
+li.selected {
+   background-color: #393E46 !important;
+}
+
+.bottom-page-space {
+   margin-bottom: 60px;
+}
+
+.red {
+   color: red;
+}
+
+.green {
+   color: green;
+}
+
+
+
+
+
+
