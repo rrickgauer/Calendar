@@ -212,3 +212,17 @@ li.selected {
 	padding: inherit;
 	margin: inherit;
 }
+
+.test-table tr th {
+	vertical-align: middle;
+}
+
+
+.sets-th-1 {
+	width: 20%;
+
+}
+
+.sets-th-3 {
+	width: 10%;
+}

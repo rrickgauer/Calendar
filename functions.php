@@ -629,8 +629,6 @@ function printSetTerms($setID) {
     $setName = getSetName($setID);
 
 
-
-
    // initialize sql query
    $pdo = dbConnect();
    $sql = $pdo->prepare('SELECT * FROM Terms WHERE set_id = :setID');
@@ -648,10 +646,26 @@ function printSetTerms($setID) {
 
    // print table
    echo
-   "<table class=\"table table-striped\">
+   "<table class=\"table table-striped\">";
 
 
-      <tbody>";
+   echo "<thead>
+       <tr>
+           <th class=\"sets-th-1\"><input type=\"text\" id=\"new-term-input\" class=\"form-control\" placeholder=\"Term\" autofocus></th>
+           <th><textarea name=\"name\" rows=\"1\" class=\"form-control\" placeholder=\"Definition\" id=\"new-definition-input\"></textarea></th>
+           <th class=\"sets-th-3\"><button type=\"button\" class=\"btn btn-primary\">Add</button></th>
+       </tr>
+   </thead>";
+
+
+
+
+
+
+
+
+
+     echo "<tbody>";
 
       while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
          $term = $row['term'];
@@ -661,7 +675,7 @@ function printSetTerms($setID) {
          echo "<tr>
                 <td>$term</td>
                 <td>$definition</td>
-                <td><button type=\"button\" class=\"btn btn-primary edit-term-btn\" data-termid=\"$termID\" data-term=\"$term\" data-definition=\"$definition\">Edit</button></td>
+                <td><button type=\"button\" class=\"btn btn-secondary edit-term-btn\" data-termid=\"$termID\" data-term=\"$term\" data-definition=\"$definition\">Edit</button></td>
               </tr>";
       }
 
@@ -714,7 +728,7 @@ function getSetName($setID) {
     $pdo = null;
     $sql = null;
 
-    // return the set name 
+    // return the set name
     return $result['name'];
 
 }
