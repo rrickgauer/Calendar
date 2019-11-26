@@ -1,11 +1,13 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<?php include('header.php'); ?>
 	<title>Add class</title>
 
 </head>
+
 <body>
 
 
@@ -116,7 +118,7 @@
 			</div>
 
 			<!-- professor email -->
-			<div class="form-group" >
+			<div class="form-group">
 				<label for="prof-email" class="col-form-label font-weight-bold">Professor email:</label>
 				<input type="email" name="prof-email" id="prof-email" class="form-control">
 			</div>
@@ -139,14 +141,11 @@
 	</div>
 
 	<script>
-		
 		$(document).ready(function() {
 			$("#add-class-navbar-link").addClass("custom-bg-grey");
 		});
-
-
-
 	</script>
 
 </body>
+
 </html>

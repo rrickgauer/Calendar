@@ -23,8 +23,3 @@ $sql = null;
 $pdo = null;
 
 ?>
-
-
-
-
-

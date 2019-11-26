@@ -61,12 +61,11 @@
 						<button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
 					</div>
 
+					<!-- see add-todo-list.php -->
 					<div class="modal-body custom-bg-white">
-
 						<form class="form" method="post" id="new-todo-form" name="new-todo-list-form" action="add-todo-list.php">
 							<input type="text" name="list-name" id="new-todo-name-input" placeholder="List name" class="form-control" required autofocus>
 						</form>
-
 					</div>
 
 					<div class="modal-footer custom-bg-white">
@@ -159,7 +158,6 @@
 
 
 			var link = 'update-todo-item-completed.php?listID=' + listID + '&itemID=' + itemID + '&completed=' + completed;
-
 			xhttp.open("GET", link, true);
 			xhttp.send();
 		}
