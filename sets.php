@@ -35,11 +35,10 @@
 		<div id="content">
 			<div class="container-fluid">
 
+				<!-- show sets sidebar button -->
 				<button type="button" id="sidebarCollapse" class="btn btn-primary">
 					Sets <ion-icon name="folder"></ion-icon>
-				</button>
-
-				<br><br>
+				</button><br><br>
 
                 <!-- term/definition table -->
 				<div id="terms-section">
@@ -55,19 +54,18 @@
 
 <!-- Edit Term modal -->
 <div class="modal fade" id="editTermModal">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+			<div class="modal-header card-header">
+				<h5 class="custom-text-white">Edit</h5>
+				<button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
 
+				<!-- update term form -->
 				<form class="form" action="update-term.php?setID=<?php echo $setID; ?>" method="post" name="updateTermForm" id="updateTermForm">
-					<input type="text" name="term" class="form-control" id="term">
-					<textarea name="definition" rows="6" class="form-control" id="definition"></textarea>
+					<input type="text" name="term" class="form-control" id="term" placeholder="Term"><br>
+					<textarea name="definition" rows="6" class="form-control" id="definition" placeholder="Definition"></textarea>
 					<input type="text" name="termID" readonly id="termID" hidden>
 				</form>
 
