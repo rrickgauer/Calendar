@@ -631,12 +631,12 @@ function printSetTerms($setID) {
 
    // initialize sql query
    $pdo = dbConnect();
-   $sql = $pdo->prepare('SELECT * FROM Terms WHERE set_id = :setID');
+   $sql = $pdo->prepare('SELECT * FROM Terms WHERE set_id = :setID ORDER BY id desc');
    $id = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);          // sanitize input
    $sql->bindParam(':setID', $id, PDO::PARAM_INT);                // bind parameters
    $sql->execute();
 
-    echo "<div class=\"card\">";
+    echo "<div class=\"card\" id=\"set-card\" data-setid=\"$setID\">";
   	echo "<div class=\"card-header\">";
     echo $setName;
 	echo '</div>';
@@ -653,17 +653,9 @@ function printSetTerms($setID) {
        <tr>
            <th class=\"sets-th-1\"><input type=\"text\" id=\"new-term-input\" class=\"form-control\" placeholder=\"Term\" autofocus></th>
            <th><textarea name=\"name\" rows=\"1\" class=\"form-control\" placeholder=\"Definition\" id=\"new-definition-input\"></textarea></th>
-           <th class=\"sets-th-3\"><button type=\"button\" class=\"btn btn-primary\">Add</button></th>
+           <th class=\"sets-th-3\"><button type=\"button\" class=\"btn btn-primary\" id=\"new-term-button\" onclick=\"addTerm()\">Add</button></th>
        </tr>
    </thead>";
-
-
-
-
-
-
-
-
 
      echo "<tbody>";
 

@@ -79,6 +79,7 @@
 
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" id="delete-term-button">Delete</button>
 				<button type="submit" class="btn btn-primary" form="updateTermForm" id="updateTermSaveButton">Save</button>
 			</div>
 		</div>
@@ -127,21 +128,25 @@
 		$("#sets-navbar-link").addClass("custom-bg-grey");
 	});
 
-	// sets the edit term moal values
-	$(".edit-term-btn").click(function() {
+	$(document).ready(function() {
+		// sets the edit term moal values
+		$(".edit-term-btn").click(function() {
 
-		// get the values of the selected term
-		var term = $(this).data("term");
-		var definition = $(this).data("definition");
-		var termID = $(this).data("termid");
+			// get the values of the selected term
+			var term = $(this).data("term");
+			var definition = $(this).data("definition");
+			var termID = $(this).data("termid");
 
-		// set the update form values to the selected data
-		$("#term").val(term);
-		$("#definition").val(definition);
-		$("#termID").val(termID);
+			// set the update form values to the selected data
+			$("#term").val(term);
+			$("#definition").val(definition);
+			$("#termID").val(termID);
 
-		// show the modal
-		$("#editTermModal").modal('show');
+
+
+			// show the modal
+			$("#editTermModal").modal('show');
+		});
 	});
 
 
@@ -152,6 +157,58 @@
 
 	$("#submit-new-set-form-button").click(function() {
 		$("#new-set-form").submit();
+	});
+
+
+	function addTerm() {
+		// update list card
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var e = this.responseText;
+				$("#terms-section").html(e);
+			}
+		};
+
+		// get the term and definition
+		var term = $("#new-term-input").val();
+		var definition = $("#new-definition-input").val();
+		var setID = $("#set-card").attr("data-setid");
+
+
+		// set the term and definition to add-new-term.php
+		xhttp.open("GET", "add-new-term.php?setID=" + setID + "&term=" + term + "&definition=" + definition, true);
+		xhttp.send();
+
+		$("#new-term-input").focus();
+	}
+
+
+
+	$(document).on('click', '#delete-term-button', function() {
+
+		if (confirm('Are you sure you want to delete the term?')) {
+
+			// hide the edit modal
+			$("#editTermModal").modal('hide');
+
+			// update terms cards
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var e = this.responseText;
+					$("#terms-section").html(e);
+				}
+			};
+
+			// get the termID
+			var termID = $("#termID").val();
+			var setID = $("#set-card").attr("data-setid");
+
+			// delete the term
+			xhttp.open("GET", "delete-term.php?setID=" + setID + "&termID=" + termID, true);
+			xhttp.send();
+		}
 	});
 </script>
 
