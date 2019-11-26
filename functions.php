@@ -696,20 +696,26 @@ function updateTerm($termID, $term, $definition) {
 
 function getSetName($setID) {
 
-
+    // connect to database
     $pdo = dbConnect();
+
+    // prepare the sql statement
     $sql = $pdo->prepare('SELECT Sets.name FROM Sets WHERE id=:setID LIMIT 1');
 
+    // filter and bind the setID
     $setID = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);
     $sql->bindParam(':setID', $setID, PDO::PARAM_INT);
 
+    // execute and fetch results
     $sql->execute();
     $result = $sql->fetch(PDO::FETCH_ASSOC);
 
-    return $result['name'];
-
+    // close connections
     $pdo = null;
     $sql = null;
+
+    // return the set name 
+    return $result['name'];
 
 }
 
