@@ -41,10 +41,6 @@
 
 				<br><br>
 
-				<div>
-					<button type="button" name="edit-set-btn" class="btn btn-primary">Edit</button>
-				</div>
-
                 <!-- term/definition table -->
 				<div id="terms-section">
 					<?php if (isset($_GET['setID'])) printSetTerms($_GET['setID']); ?>
