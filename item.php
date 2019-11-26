@@ -140,7 +140,11 @@ $dateDueDefault = $row['date_due_default'];
                <!-- notes -->
                <tr>
                   <th>Notes</th>
-                  <td><?php echo $notes; ?></td>
+                  <td>
+                     <!-- number of rows that the notes text area has -->
+                     <?php $numRows = substr_count($notes, "\n"); ?>
+                     <textarea class="form-control" rows="<?php echo $numRows; ?>" id="comment" readonly><?php echo $notes; ?></textarea>
+                  </td>
                </tr>
             </table>
 
@@ -208,7 +212,7 @@ $dateDueDefault = $row['date_due_default'];
          <!-- date assigned -->
          <div class="form-group row">
             <label for="date-assigned" class="col-form-label font-weight-bold">Date assigned:</label>
-            <input class="flatpickr flatpickr-input active form-control" type="text" readonly="readonly" 
+            <input class="flatpickr flatpickr-input active form-control" type="text" readonly="readonly"
             id="update-item-form-date-assigned" name="date-assigned">
          </div>
 
@@ -314,10 +318,10 @@ $dateDueDefault = $row['date_due_default'];
                      </select>
                   </div>
                </form>
-               
-            
 
-               
+
+
+
 
 
 
@@ -348,12 +352,12 @@ $dateDueDefault = $row['date_due_default'];
    }
 
 
-      
+
    // see add-item-to-todolist.php
    $("#addItemToListButton").click(function() {
       var listID = $("#list").val();
       var text = $("#itemToListName").val();
-     
+
       var fileName = "add-item-to-todo-list.php?listID="+listID+"&text="+text;
       var xhttp = new XMLHttpRequest();
 
@@ -363,7 +367,7 @@ $dateDueDefault = $row['date_due_default'];
       $('#addTodoListModal').modal('hide');
       $("#item-added-to-list-alert").show();
 
-     
+
    });
 
    // updates the info in the update-item-info form modal

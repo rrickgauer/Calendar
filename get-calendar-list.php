@@ -63,13 +63,18 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
 
    echo '<tr class="item-row">';
 
-   $displayTitle = $row['dept'] . ' ' . $row['number'] . ' - ' . $row['title'];
+   $displayTitle = $row['dept'] . ' ' . $row['number'];
 
 
-   echo '<td><a href="class.php?cid=' . $row['cid'] . '">'. '<ion-icon class="icon-class" name="radio-button-on" style="color:' . $row['color'] . '"></ion-icon></td>';
+   //echo '<td><a href="class.php?cid=' . $row['cid'] . '">'. '<ion-icon class="icon-class" name="radio-button-on" style="color:' . $row['color'] . '"></ion-icon></td>';
+
+   echo '<td><a href="class.php?cid=' . $row['cid'] . '">' . $displayTitle   . '</td>';
+
+
 
    $name = $row['name'];
    $itemID = $row['id'];
+
    // item name
    if ($row['completed'] == 'y') {
       echo "<td class=\"text-line pointer\" onclick=\"gotoItem($itemID)\">$name</td>";
@@ -96,6 +101,16 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
 
    echo "<td><span class=\"badge $badgeClass\">" . $row['type'] . '</span></td>';
 
+   $completed = $row['completed'];
+
+
+
+
+
+
+
+
+
    echo '</tr>';
 
 
@@ -105,4 +120,5 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
 ?>
 
 
-</table></div>
+</table>
+</div>

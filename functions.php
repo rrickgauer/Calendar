@@ -20,11 +20,11 @@ function dbConnect() {
 // returns a string to include in the insert class sql stmt
 // the string includes the days that the class is held
 function getMeetingDaysInsertString($days) {
-		$mon   = "n";
-		$tues  = "n";
-		$wed   = "n";
+		$mon = "n";
+		$tues = "n";
+		$wed = "n";
 		$thurs = "n";
-		$fri   = "n";
+		$fri = "n";
 
 
 		$count = 0;
@@ -52,18 +52,18 @@ function getMeetingDaysInsertString($days) {
 
 // inserts a class into the DB
 function insertClass($post) {
-	$dept       = $post['dept'];
-	$number     = $post['number'];
-	$section    = $post['section'];
-	$title      = $post['title'];
-	$building   = $post['building'];
-	$room       = $post['room'];
+	$dept = $post['dept'];
+	$number = $post['number'];
+	$section = $post['section'];
+	$title = $post['title'];
+	$building = $post['building'];
+	$room = $post['room'];
 	$time_start = $post['time-start'];
-	$time_end   = $post['time-end'];
+	$time_end = $post['time-end'];
 	$prof_first = $post['prof-first'];
-	$prof_last  = $post['prof-last'];
+	$prof_last = $post['prof-last'];
 	$prof_email = $post['prof-email'];
-	$term       = $post['term'];
+	$term = $post['term'];
 
 	$sql1 = "INSERT INTO Classes (dept, number, section, title, building, room, time_start, time_end, prof_first, prof_last, prof_email, term, meets_mon, meets_tues, meets_wed, meets_thurs, meets_fri) values ('$dept', $number, $section, '$title', '$building', $room, '$time_start', '$time_end', '$prof_first', '$prof_last', '$prof_email', '$term',";
 
@@ -102,13 +102,12 @@ function getClassInfo($id) {
 function updateClass($classID, $post) {
 
    $days = $post['days'];
-
    // figure out which days meeting
-   $mon   = "n";
-   $tues  = "n";
-   $wed   = "n";
+   $mon = "n";
+   $tues = "n";
+   $wed = "n";
    $thurs = "n";
-   $fri   = "n";
+   $fri = "n";
 
    $count = 0;
    while ($count < count($days)) {
@@ -132,20 +131,20 @@ function updateClass($classID, $post) {
    $sql = $pdo->prepare('UPDATE Classes SET dept=:dept, number=:number, section=:section, title=:title, building=:building, room=:room, meets_mon=:mon, meets_tues=:tues, meets_wed=:wed, meets_thurs=:thurs, meets_fri=:fri, time_start=:time_start, time_end=:time_end, prof_first=:prof_first, prof_last=:prof_last, prof_email=:prof_email, term=:term, color=:color WHERE id=:classID');
 
 
-   $dept       = filter_var($post['dept'], FILTER_SANITIZE_STRING);
-   $number     = filter_var($post['number'], FILTER_SANITIZE_NUMBER_INT);
-   $section    = filter_var($post['section'], FILTER_SANITIZE_NUMBER_INT);
-   $title      = filter_var($post['title'], FILTER_SANITIZE_STRING);
-   $building   = filter_var($post['building'], FILTER_SANITIZE_STRING);
-   $room       = filter_var($post['room'], FILTER_SANITIZE_NUMBER_INT);
+   $dept = filter_var($post['dept'], FILTER_SANITIZE_STRING);
+   $number = filter_var($post['number'], FILTER_SANITIZE_NUMBER_INT);
+   $section = filter_var($post['section'], FILTER_SANITIZE_NUMBER_INT);
+   $title = filter_var($post['title'], FILTER_SANITIZE_STRING);
+   $building = filter_var($post['building'], FILTER_SANITIZE_STRING);
+   $room = filter_var($post['room'], FILTER_SANITIZE_NUMBER_INT);
    $time_start = filter_var($post['time-start'], FILTER_SANITIZE_STRING);
-   $time_end   = filter_var($post['time-end'], FILTER_SANITIZE_STRING);
+   $time_end = filter_var($post['time-end'], FILTER_SANITIZE_STRING);
    $prof_first = filter_var($post['prof-first'], FILTER_SANITIZE_STRING);
-   $prof_last  = filter_var($post['prof-last'], FILTER_SANITIZE_STRING);
+   $prof_last = filter_var($post['prof-last'], FILTER_SANITIZE_STRING);
    $prof_email = filter_var($post['prof-email'], FILTER_SANITIZE_EMAIL);
-   $term       = filter_var($post['term'], FILTER_SANITIZE_STRING);
-   $color      = filter_var($post['color'], FILTER_SANITIZE_STRING);
-   $classID    = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
+   $term = filter_var($post['term'], FILTER_SANITIZE_STRING);
+   $color = filter_var($post['color'], FILTER_SANITIZE_STRING);
+   $classID = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
 
 
    $sql->bindParam(':dept', $dept, PDO::PARAM_STR);
@@ -237,7 +236,7 @@ function printItemCard($itemID, $name, $class, $type, $dateAssigned, $dateDue, $
 
    echo "<div class=\"card h-100 $selector\">";
 
-      echo "<div class=\"card-header\">$name
+      echo "<div class=\"card-header\"><b>$name</b>
          <div class=\"float-right\">
             <a href=\"#\" class=\"custom-text-blue\" data-toggle=\"modal\" data-target=\"#update-item-modal\" onclick=\"getUpdateItemFormInfo($itemID)\">
                <ion-icon name=\"create\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit item\"></ion-icon>
@@ -270,10 +269,6 @@ function printItemCard($itemID, $name, $class, $type, $dateAssigned, $dateDue, $
                <td>$completedBadge</td>
             </tr>
 
-            <tr>
-               <th>Notes</th>
-               <td>$notes</td>
-            </tr>
          </table>
 
       </div>";
@@ -348,13 +343,13 @@ function getItemCategoryArrays($classID) {
    $sql->bindParam(':classID', $classID, PDO::PARAM_INT);
    $sql->execute();
 
-   $all         = array();
-   $completed   = array();
+   $all = array();
+   $completed = array();
    $assignments = array();
-   $exams       = array();
-   $projects    = array();
-   $quizzes     = array();
-   $other       = array();
+   $exams = array();
+   $projects = array();
+   $quizzes = array();
+   $other = array();
 
    while ($item = $sql->fetch(PDO::FETCH_ASSOC))
    {
@@ -382,13 +377,13 @@ function getItemCategoryArrays($classID) {
    $allItems = array();
 
 
-   $allItems['all']         = $all;
+   $allItems['all'] = $all;
    $allItems['assignments'] = $assignments;
-   $allItems['exams']       = $exams;
-   $allItems['projects']    = $projects;
-   $allItems['quizzes']     = $quizzes;
-   $allItems['other']       = $other;
-   $allItems['completed']   = $completed;
+   $allItems['exams'] = $exams;
+   $allItems['projects'] = $projects;
+   $allItems['quizzes'] = $quizzes;
+   $allItems['other'] = $other;
+   $allItems['completed'] = $completed;
 
    return $allItems;
 
@@ -456,6 +451,8 @@ function printListItems($listID) {
                <div class=\"dropdown-divider\"></div>
                   <a class=\"dropdown-item\" href=\"#\" onclick=\"completeAllListItems()\"><ion-icon name=\"checkmark\"></ion-icon> Mark all complete</a>
                   <a class=\"dropdown-item\" href=\"#\" onclick=\"incompleteAllListItems()\"><ion-icon name=\"close\"></ion-icon> Mark all incomplete</a>
+               <div class=\"dropdown-divider\"></div>
+                  <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteCompletedListItems()\"><ion-icon name=\"git-network\"></ion-icon> Delete completed items</a>
             </div>
          </div>
          </div>
@@ -516,6 +513,11 @@ function printListItems($listID) {
          $count++;
 
       }
+
+
+
+
+
 
 
          echo '</table></div>';
@@ -605,6 +607,105 @@ function printAlert($message) {
       </button>
    </div>";
 }
+
+function printSetSidebar() {
+
+   $pdo = dbConnect();
+   $sql = $pdo->prepare('SELECT * FROM Sets ORDER BY name');
+   $sql->execute();
+
+   while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+      $name = $row['name'];
+      $id = $row['id'];
+
+      echo "<li><a href=\"sets.php?setID=$id\">$name</a></li>";
+   }
+
+   $sql = null;
+}
+
+function printSetTerms($setID) {
+
+   // initialize sql query
+   $pdo = dbConnect();
+   $sql = $pdo->prepare('SELECT * FROM Terms WHERE set_id = :setID');
+   $id = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);          // sanitize input
+   $sql->bindParam(':setID', $id, PDO::PARAM_INT);                // bind parameters
+   $sql->execute();
+
+   // print table
+   echo
+   "<table class=\"table table-striped\">
+      <thead>
+         <tr>
+            <th>Term</th>
+            <th>Definition</th>
+            <th><th>
+         </tr>
+      </thead>
+
+      <tbody>";
+
+      while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+         $term = $row['term'];
+         $definition = $row['definition'];
+         $termID = $row['id'];
+
+         echo "<tr>
+                <td>$term</td>
+                <td>$definition</td>
+                <td><button type=\"button\" class=\"btn btn-primary edit-term-btn\" data-termid=\"$termID\" data-term=\"$term\" data-definition=\"$definition\">Edit</button></td>
+              </tr>";
+      }
+
+
+      echo "</tbody>
+   </table>";
+
+}
+
+
+function updateTerm($termID, $term, $definition) {
+    $pdo = dbConnect();
+    $sql = $pdo->prepare('UPDATE Terms SET term=:term, definition=:definition WHERE id=:termID');
+
+    $term = filter_var($term, FILTER_SANITIZE_STRING);
+    $sql->bindParam(':term', $term, PDO::PARAM_STR);
+
+    $definition = filter_var($definition, FILTER_SANITIZE_STRING);
+    $sql->bindParam(':definition', $definition, PDO::PARAM_STR);
+
+    $termID = filter_var($termID, FILTER_SANITIZE_NUMBER_INT);
+    $sql->bindParam(':termID', $termID, PDO::PARAM_INT);
+
+    $sql->execute();
+
+    $sql = null;
+    $pdo = null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
