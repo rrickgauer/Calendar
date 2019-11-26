@@ -626,6 +626,11 @@ function printSetSidebar() {
 
 function printSetTerms($setID) {
 
+    $setName = getSetName($setID);
+
+
+
+
    // initialize sql query
    $pdo = dbConnect();
    $sql = $pdo->prepare('SELECT * FROM Terms WHERE set_id = :setID');
@@ -633,16 +638,18 @@ function printSetTerms($setID) {
    $sql->bindParam(':setID', $id, PDO::PARAM_INT);                // bind parameters
    $sql->execute();
 
+    echo "<div class=\"card\">";
+  	echo "<div class=\"card-header\">";
+    echo $setName;
+	echo '</div>';
+
+  	echo '<div class="card-body">';
+
+
    // print table
    echo
    "<table class=\"table table-striped\">
-      <thead>
-         <tr>
-            <th>Term</th>
-            <th>Definition</th>
-            <th><th>
-         </tr>
-      </thead>
+
 
       <tbody>";
 
@@ -661,6 +668,9 @@ function printSetTerms($setID) {
 
       echo "</tbody>
    </table>";
+
+   echo '</div> </div>';
+
 
 }
 
@@ -682,6 +692,25 @@ function updateTerm($termID, $term, $definition) {
 
     $sql = null;
     $pdo = null;
+}
+
+function getSetName($setID) {
+
+
+    $pdo = dbConnect();
+    $sql = $pdo->prepare('SELECT Sets.name FROM Sets WHERE id=:setID LIMIT 1');
+
+    $setID = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);
+    $sql->bindParam(':setID', $setID, PDO::PARAM_INT);
+
+    $sql->execute();
+    $result = $sql->fetch(PDO::FETCH_ASSOC);
+
+    return $result['name'];
+
+    $pdo = null;
+    $sql = null;
+
 }
 
 
