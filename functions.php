@@ -648,7 +648,7 @@ function printSetTerms($setID) {
        <div class=\"dropdown-menu\">
           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#update-set-name-modal\" onclick=\"updateSetName()\"><ion-icon name=\"create\"></ion-icon> Edit name</a>
           <div class=\"dropdown-divider\"></div>
-          <a class=\"dropdown-item\" href=\"#\"><ion-icon name=\"trash\"></ion-icon> Delete set</a>
+          <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteSet($setID)\"><ion-icon name=\"trash\"></ion-icon> Delete set</a>
        </div>
     </div>
     </div>";

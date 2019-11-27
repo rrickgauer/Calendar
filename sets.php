@@ -208,6 +208,24 @@
 		$("#updated-set-name-form").submit();
 	});
 
+	function deleteSet(setID) {
+		if (confirm('Are you sure you want to delete the set?'))
+      {
+         var setID = $("#set-card").attr("data-setid");
+
+
+         window.location.href = 'delete-set.php?setID=' + setID;
+
+
+
+
+
+
+
+
+		}
+	}
+
 
 	$(document).on('click', '#delete-term-button', function() {
 
