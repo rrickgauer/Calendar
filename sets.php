@@ -128,26 +128,25 @@
 		$("#sets-navbar-link").addClass("custom-bg-grey");
 	});
 
-	$(document).ready(function() {
-		// sets the edit term moal values
-		$(".edit-term-btn").click(function() {
 
-			// get the values of the selected term
-			var term = $(this).data("term");
-			var definition = $(this).data("definition");
-			var termID = $(this).data("termid");
+	$(document).on('click', '.edit-term-btn', function() {
 
-			// set the update form values to the selected data
-			$("#term").val(term);
-			$("#definition").val(definition);
-			$("#termID").val(termID);
+		// get the values of the selected term
+		var term = $(this).data("term");
+		var definition = $(this).data("definition");
+		var termID = $(this).data("termid");
 
+		// set the update form values to the selected data
+		$("#term").val(term);
+		$("#definition").val(definition);
+		$("#termID").val(termID);
 
 
-			// show the modal
-			$("#editTermModal").modal('show');
-		});
+
+		// show the modal
+		$("#editTermModal").modal('show');
 	});
+
 
 
 	// submits the update term modal
