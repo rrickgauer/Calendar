@@ -636,9 +636,9 @@ function printSetTerms($setID) {
    $sql->bindParam(':setID', $id, PDO::PARAM_INT);                // bind parameters
    $sql->execute();
 
-    echo "<div class=\"card\" id=\"set-card\" data-setid=\"$setID\">";
+   echo "<div class=\"card\" id=\"set-card\" data-setid=\"$setID\" data-setname=\"$setName\">";
   	echo "<div class=\"card-header\">";
-    echo $setName;
+   echo $setName;
 
     // dropdown menu
     echo
@@ -646,15 +646,12 @@ function printSetTerms($setID) {
     <div class=\"dropdown dropleft\">
        <ion-icon name=\"more\" data-toggle=\"dropdown\" class=\"hover-blue\"></ion-icon>
        <div class=\"dropdown-menu\">
-          <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#update-todo-list-name-modal\" onclick=\"updateListName()\"><ion-icon name=\"create\"></ion-icon> Edit name</a>
+          <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#update-set-name-modal\" onclick=\"updateSetName()\"><ion-icon name=\"create\"></ion-icon> Edit name</a>
           <div class=\"dropdown-divider\"></div>
           <a class=\"dropdown-item\" href=\"#\"><ion-icon name=\"trash\"></ion-icon> Delete set</a>
        </div>
     </div>
     </div>";
-
-
-
 
     echo '</div>';
 

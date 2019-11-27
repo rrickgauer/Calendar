@@ -108,6 +108,28 @@
 	</div>
 </div>
 
+<!-- Update set name modal -->
+<div class="modal fade" id="update-set-name-modal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header card-header">
+				<h5 class="custom-text-white">Change name</h5>
+				<button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
+			</div>
+
+			<div class="modal-body">
+				<form class="form" action="update-set-name.php?setID=<?php echo $setID; ?>" method="post" name="updated-set-name-form" id="updated-set-name-form">
+					<input type="text" name="name" placeholder="Enter new name" class="form-control" required value="<?php echo getSetName($setID); ?>">
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" form="update-set-name-form" id="submit-updated-set-name-button">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <script>
 	// collapses side nav
@@ -158,7 +180,6 @@
 		$("#new-set-form").submit();
 	});
 
-
 	function addTerm() {
 		// update list card
 		var xhttp = new XMLHttpRequest();
@@ -182,6 +203,10 @@
 		$("#new-term-input").focus();
 	}
 
+
+	$(document).on('click', '#submit-updated-set-name-button', function() {
+		$("#updated-set-name-form").submit();
+	});
 
 
 	$(document).on('click', '#delete-term-button', function() {
