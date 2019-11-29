@@ -618,7 +618,7 @@ function printSetSidebar() {
       $name = $row['name'];
       $id = $row['id'];
 
-      echo "<li><a href=\"sets.php?setID=$id\">$name</a></li>";
+      echo "<li><a href=\"sets.php?setID=$id\" data-setid=\"$id\">$name</a></li>";
    }
 
    $sql = null;

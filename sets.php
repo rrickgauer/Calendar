@@ -242,6 +242,15 @@
 			xhttp.send();
 		}
 	});
+
+
+   // sets the current side nav item to active
+   $(document).ready(function() {
+      var setID = $("#set-card").data("setid");
+      $("a[data-setid=" + setID + "]").closest("li").addClass("active");
+   });
+
+
 </script>
 
 </html>
