@@ -638,7 +638,7 @@ function printSetTerms($setID) {
 
    echo "<div class=\"card\" id=\"set-card\" data-setid=\"$setID\" data-setname=\"$setName\">";
   	echo "<div class=\"card-header\">";
-   echo $setName;
+   echo "<h4>$setName";
 
     // dropdown menu
     echo
@@ -653,14 +653,14 @@ function printSetTerms($setID) {
     </div>
     </div>";
 
-    echo '</div>';
+    echo '</h4></div>';
 
-  	echo '<div class="card-body">';
+  	echo '<div class="card-body no-padding">';
 
 
    // print table
    echo
-   "<table class=\"table table-striped\">";
+   "<table class=\"table\" id=\"set-table\">";
 
 
    echo "<thead>

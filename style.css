@@ -127,7 +127,6 @@ a {
 	margin: 0;
 }
 
-#todo-list-section {}
 
 .section-border-line {
 	border-style: solid;
@@ -213,10 +212,10 @@ li.selected {
 	margin: inherit;
 }
 
-.sets-table tr th {
-	vertical-align: middle;
-}
 
+#set-table tr td {
+   background-color: #EEEEEE !important;
+}
 
 .sets-th-1 {
 	width: 20%;
@@ -225,4 +224,9 @@ li.selected {
 
 .sets-th-3 {
 	width: 10%;
+}
+
+.no-padding {
+   margin: 0;
+   padding: 0;
 }
