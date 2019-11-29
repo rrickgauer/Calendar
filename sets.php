@@ -212,17 +212,7 @@
 		if (confirm('Are you sure you want to delete the set?'))
       {
          var setID = $("#set-card").attr("data-setid");
-
-
          window.location.href = 'delete-set.php?setID=' + setID;
-
-
-
-
-
-
-
-
 		}
 	}
 
