@@ -407,9 +407,6 @@ function printTodoListGroup() {
 
       echo "<div class=\"float-right\"><span class=\"badge badge-secondary\">$incomplete</span></div></a></li>";
 
-
-
-
    }
 }
 
@@ -611,14 +608,16 @@ function printAlert($message) {
 function printSetSidebar() {
 
    $pdo = dbConnect();
-   $sql = $pdo->prepare('SELECT * FROM Sets ORDER BY name');
+   $sql = $pdo->prepare('SELECT Sets.id, Sets.name, COUNT(Terms.id) as "count" FROM Sets LEFT JOIN Terms on Sets.id=Terms.set_id GROUP BY Sets.id ORDER BY name');
    $sql->execute();
 
    while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
       $name = $row['name'];
       $id = $row['id'];
+      $count = $row['count'];
 
-      echo "<li><a href=\"sets.php?setID=$id\" data-setid=\"$id\">$name</a></li>";
+      echo "<li><a href=\"sets.php?setID=$id\" data-setid=\"$id\">$name";
+      echo "<div class=\"float-right\"><span class=\"badge badge-secondary\">$count</span></div></a></li>";
    }
 
    $sql = null;
