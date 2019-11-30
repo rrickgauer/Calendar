@@ -645,6 +645,8 @@ function printSetTerms($setID) {
     <div class=\"dropdown dropleft\">
        <ion-icon name=\"more\" data-toggle=\"dropdown\" class=\"hover-blue\"></ion-icon>
        <div class=\"dropdown-menu\">
+          <a class=\"dropdown-item\" href=\"exam.php?setID=$setID\"><ion-icon name=\"copy\"></ion-icon> Exam</a>
+          <div class=\"dropdown-divider\"></div>
           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#update-set-name-modal\" onclick=\"updateSetName()\"><ion-icon name=\"create\"></ion-icon> Edit name</a>
           <div class=\"dropdown-divider\"></div>
           <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteSet($setID)\"><ion-icon name=\"trash\"></ion-icon> Delete set</a>
@@ -735,6 +737,30 @@ function getSetName($setID) {
 
     // return the set name
     return $result['name'];
+
+}
+
+function printTermsExamSelect($setID) {
+   $pdo = dbConnect();
+   $sql = "SELECT Terms.id, Terms.term FROM Terms WHERE Terms.set_id=$setID ORDER BY Terms.term asc";
+   $results = $pdo->query($sql);
+
+
+
+   echo "<select class=\"js-example-basic-single form-control\">";
+
+   while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+
+
+      $term = $row['term'];
+      $id = $row['id'];
+
+      echo "<option value=\"$id\">$term</option>";
+
+
+   }
+
+   echo '</select>';
 
 }
 
