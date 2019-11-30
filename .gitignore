@@ -3,3 +3,6 @@ db-info.php
 
 # ignore the php error log
 php_errorlog
+
+# ds store
+.DS_Store
