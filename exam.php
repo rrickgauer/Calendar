@@ -3,6 +3,7 @@
    include_once('functions.php');
    $setID = $_GET['setID'];
 
+   $questionNumber = $_GET['q'];
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +11,6 @@
 
 <head>
 	<?php include('header.php'); ?>
-
-
 	<title>Exam</title>
 </head>
 
@@ -22,74 +21,38 @@
 		<h1>Exam</h1>
 
 
+      <?php $termIDs = getRandomSetTermIDArray($setID); ?>
+
+
+
+
 		<div id="question-section">
 
 
-			<?php
+         <?php
 
-      $termIDs = getRandomSetTermIDArray($setID);
-
-      $id = $termIDs[0]['id'];
-      $definition = $termIDs[0]['definition'];
+         $termID = $termIDs[$questionNumber]['id'];
+         $definition = $termIDs[$questionNumber]['definition'];
 
 
-      echo "<p><b>Definition:</b> $definition</p>";
-      echo "<p><b>ID:</b> $id</p>";
+         // include("get-term-question.php?setID=$setID&termID=$termID&definition=$definition");
+
+         include("get-term-question.php?termID=$termID");
 
 
-      $pdo = dbConnect();
-
-      $sql = "SELECT Terms.term, \"c\" as \"value\" FROM Terms where Terms.id = $id union (select Terms.term, \"f\" from Terms where Terms.id!=$id and Terms.set_id=$setID order by rand() limit 3) order by rand()";
-
-      $result = $pdo->query($sql);
-
-      $answer1 = $result->fetch(PDO::FETCH_ASSOC);
-      $answer2 = $result->fetch(PDO::FETCH_ASSOC);
-      $answer3 = $result->fetch(PDO::FETCH_ASSOC);
-      $answer4 = $result->fetch(PDO::FETCH_ASSOC);
 
 
-      ?>
-
-
-			<b>Select term:</b>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="<?php echo $answer1['value']; ?>">
-				<label class="form-check-label" for="radio1">
-					<?php echo $answer1['term']; ?>
-				</label>
-			</div>
-
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="<?php echo $answer2['value']; ?>">
-				<label class="form-check-label" for="radio2">
-					<?php echo $answer2['term']; ?>
-				</label>
-			</div>
-
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="<?php echo $answer3['value']; ?>">
-				<label class="form-check-label" for="radio3">
-					<?php echo $answer3['term']; ?>
-				</label>
-			</div>
-
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="exampleRadios" id="radio4" value="<?php echo $answer4['value']; ?>">
-				<label class="form-check-label" for="radio4">
-					<?php echo $answer4['term']; ?>
-				</label>
-			</div>
-
-			<button type="button" class="btn btn-primary" id="submit-answer-button">Submit</button>
-
-
-		</div>
+         ?>
 
 
 
 
 
+
+      </div>
+
+      <button type="button" class="btn btn-primary" id="submit-answer-button">Submit</button>
+      <button type="button" id="next-question-button" class="btn btn-primary">Next Question</button>
 
 
 
@@ -99,22 +62,24 @@
 
 
 	<script>
-		$(document).ready(function() {
+
+   var count = 0;
+   var size = <?php echo count($termIDs); ?>;
+
+      // sets the text of the correct answer green when submit button is clicked
 
 			$("#submit-answer-button").click(function() {
-
 				var correctInput = $("input[value^='c']").next().addClass("green");
-
-
-
-
-
-
-
-
 			});
 
-		});
+
+
+
+
+
+
+
+
 	</script>
 
 

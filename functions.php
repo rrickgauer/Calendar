@@ -823,4 +823,20 @@ function getRandomSetTermIDArray($setID) {
    return $termIDs;
 }
 
+
+function getQuestion($termID, $setID, $definition) {
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
 ?>
