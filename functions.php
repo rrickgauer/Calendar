@@ -740,53 +740,39 @@ function getSetName($setID) {
 
 }
 
+// prints out all the terms in a set in a option and select form style
 function printTermsExamSelect($setID) {
+
+   // connect to database
    $pdo = dbConnect();
-   $sql = "SELECT Terms.id, Terms.term FROM Terms WHERE Terms.set_id=$setID ORDER BY Terms.term asc";
-   $results = $pdo->query($sql);
 
+   // prepare sql statement
+   $sql = $pdo->prepare('SELECT Terms.id, Terms.term FROM Terms WHERE Terms.set_id=:setID ORDER BY Terms.term asc');
 
+   // filter and bind the set id
+   $setID = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);
+   $sql->bindParam(':setID', $setID, PDO::PARAM_INT);
 
+   // execute the sql statement
+   $sql->execute();
+
+   // initial select tag
    echo "<select class=\"js-example-basic-single form-control\">";
 
-   while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+   // print out all the term
+   while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+      $term = $row['term'];   // term
+      $id = $row['id'];       // term id
 
-
-      $term = $row['term'];
-      $id = $row['id'];
-
+      // print the output
       echo "<option value=\"$id\">$term</option>";
-
-
    }
 
-   echo '</select>';
+   echo '</select>';   // endding select tag
 
+   // close connections
+   $pdo = null;
+   $sql = null;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
