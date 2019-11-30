@@ -55,7 +55,6 @@
 			</div>
 		</div>
 
-
 	</div>
 
 </body>
@@ -90,11 +89,13 @@
 <div class="modal fade" id="new-set-modal">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
+
 			<div class="modal-header card-header">
 				<h5 class="custom-text-white">New set</h5>
 				<button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
 			</div>
 
+         <!-- see create-new-set.php -->
 			<div class="modal-body">
 				<form class="form" action="create-new-set.php" method="post" name="new-set-form" id="new-set-form">
 					<input type="text" name="name" placeholder="Enter set name" class="form-control" required>
@@ -117,12 +118,14 @@
 				<button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
 			</div>
 
+         <!-- main body of the modal -->
 			<div class="modal-body">
 				<form class="form" action="update-set-name.php?setID=<?php echo $setID; ?>" method="post" name="updated-set-name-form" id="updated-set-name-form">
 					<input type="text" name="name" placeholder="Enter new name" class="form-control" required value="<?php echo getSetName($setID); ?>">
 				</form>
 			</div>
 
+         <!-- submit button -->
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary" form="update-set-name-form" id="submit-updated-set-name-button">Save</button>
 			</div>
@@ -159,16 +162,13 @@
 		var termID = $(this).data("termid");
 
 		// set the update form values to the selected data
-		$("#term").val(term);
-		$("#definition").val(definition);
-		$("#termID").val(termID);
-
-
+		$("#term").val(term);               // term
+		$("#definition").val(definition);   // definition
+		$("#termID").val(termID);           // term id
 
 		// show the modal
 		$("#editTermModal").modal('show');
 	});
-
 
 
 	// submits the update term modal
@@ -180,8 +180,10 @@
 		$("#new-set-form").submit();
 	});
 
+   // adds the term to the database
 	function addTerm() {
-		// update list card
+
+      // update list card
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -203,11 +205,12 @@
 		$("#new-term-input").focus();
 	}
 
-
+   // submits the update set name form
 	$(document).on('click', '#submit-updated-set-name-button', function() {
 		$("#updated-set-name-form").submit();
 	});
 
+   // deletes the set
 	function deleteSet(setID) {
 		if (confirm('Are you sure you want to delete the set?'))
       {
@@ -217,6 +220,7 @@
 	}
 
 
+   // deletes the set
 	$(document).on('click', '#delete-term-button', function() {
 
 		if (confirm('Are you sure you want to delete the term?')) {
