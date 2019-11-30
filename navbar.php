@@ -24,13 +24,13 @@
 							<?php printClassLinks("s20"); ?>
 						</div>
 					</li>
+
 					<li class="nav-item nav-link-hover" id="add-item-navbar-link"><a class="nav-link " href="add-item.php">Add Item</a></li>
 					<li class="nav-item nav-link-hover" id="add-class-navbar-link"><a class="nav-link nav-link-hover" href="add-class.php">Add Class</a></li>
 					<li class="nav-item nav-link-hover dropdown" id="todo-navbar-link"><a href="todo-lists.php" class="nav-link nav-link-hover">Todo's</a></li>
 					<li class="nav-item nav-link-hover" id="calendar-navbar-link"><a class="nav-link nav-link-hover" href="calendar-list.php">Calendar</a></li>
 					<li class="nav-item nav-link-hover" id="sets-navbar-link"><a class="nav-link nav-link-hover" href="sets.php">Study Sets</a></li>
-                    <li class="nav-item nav-link-hover" id="test-navbar-link"><a class="nav-link nav-link-hover" href="test.php">Test Page</a></li>
-
+					<!-- <li class="nav-item nav-link-hover" id="test-navbar-link"><a class="nav-link nav-link-hover" href="test.php">Test Page</a></li> -->
 
 				</ul>
 			</div>
