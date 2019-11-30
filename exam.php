@@ -1,10 +1,7 @@
 <?php
 
-include_once('functions.php');
-
-$setID = $_GET['setID'];
-
-
+   include_once('functions.php');
+   $setID = $_GET['setID'];
 
 ?>
 
@@ -26,36 +23,23 @@ $setID = $_GET['setID'];
 
 		<h1>Exam</h1>
 
-      <ol>
-         <?php
-
-         $pdo = dbConnect();
-         $sql = "SELECT Terms.id, Terms.definition FROM Terms WHERE set_id=$setID ORDER BY Terms.term asc";
-         $results = $pdo->query($sql);
-
-         while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-            $id = $row['id'];
-            $definition = $row['definition'];
-
-            echo "<li>$definition";
-
-            echo '<br />';
-
-            printTermsExamSelect($setID);
 
 
-            echo '</li>';
+
+
+      <?php
+
+      $termIDs = getRandomSetTermIDArray($setID);
+
+
+      ?>
 
 
 
 
 
-         }
 
 
-
-         ?>
-      </ol>
 
 
 

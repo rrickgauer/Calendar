@@ -788,4 +788,33 @@ function printTermsExamSelect($setID) {
    $sql = null;
 }
 
+function getRandomSetTermIDArray($setID) {
+
+   $pdo = dbConnect();
+
+   $sql = $pdo->prepare('SELECT Terms.id FROM Terms WHERE Terms.set_id=:setID ORDER BY RAND()');
+
+   // filter and bind the set id
+   $setID = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);
+   $sql->bindParam(':setID', $setID, PDO::PARAM_INT);
+
+   $sql->execute();
+   $termIDArray = $sql->fetchAll();
+
+   //print_r($termIDArray);
+
+   $termIDs = array();
+
+   $count = 0;
+   while ($count < count($termIDArray)) {
+
+      $termID = $termIDArray[$count][0];
+      array_push($termIDs, $termID);
+
+      $count++;
+   }
+
+   return $termIDs;
+}
+
 ?>
