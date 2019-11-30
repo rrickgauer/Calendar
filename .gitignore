@@ -1,2 +1,5 @@
 # ignore the db-info.php file
 db-info.php
+
+# ignore the php error log
+php_errorlog
