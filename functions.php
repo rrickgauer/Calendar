@@ -792,7 +792,7 @@ function getRandomSetTermIDArray($setID) {
 
    $pdo = dbConnect();
 
-   $sql = $pdo->prepare('SELECT Terms.id FROM Terms WHERE Terms.set_id=:setID ORDER BY RAND()');
+   $sql = $pdo->prepare('SELECT Terms.id, Terms.definition FROM Terms WHERE Terms.set_id=:setID ORDER BY RAND()');
 
    // filter and bind the set id
    $setID = filter_var($setID, FILTER_SANITIZE_NUMBER_INT);
@@ -808,8 +808,14 @@ function getRandomSetTermIDArray($setID) {
    $count = 0;
    while ($count < count($termIDArray)) {
 
+
       $termID = $termIDArray[$count][0];
-      array_push($termIDs, $termID);
+      $definition = $termIDArray[$count][1];
+
+      $element['id'] = $termID;
+      $element['definition'] = $definition;
+
+      array_push($termIDs, $element);
 
       $count++;
    }
