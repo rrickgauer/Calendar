@@ -22,10 +22,10 @@
 		<h1>Exam</h1>
 
 
+		<div id="question-section">
 
 
-
-		<?php
+			<?php
 
       $termIDs = getRandomSetTermIDArray($setID);
 
@@ -34,6 +34,7 @@
 
 
       echo "<p><b>Definition:</b> $definition</p>";
+      echo "<p><b>ID:</b> $id</p>";
 
 
       $pdo = dbConnect();
@@ -51,43 +52,39 @@
       ?>
 
 
+			<b>Select term:</b>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="<?php echo $answer1['value']; ?>">
+				<label class="form-check-label" for="radio1">
+					<?php echo $answer1['term']; ?>
+				</label>
+			</div>
 
-      <b>Select term:</b>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="<?php echo $anwer1['value']; ?>">
-			<label class="form-check-label" for="radio1">
-				<?php echo $answer1['term']; ?>
-			</label>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="<?php echo $answer2['value']; ?>">
+				<label class="form-check-label" for="radio2">
+					<?php echo $answer2['term']; ?>
+				</label>
+			</div>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="<?php echo $answer3['value']; ?>">
+				<label class="form-check-label" for="radio3">
+					<?php echo $answer3['term']; ?>
+				</label>
+			</div>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="exampleRadios" id="radio4" value="<?php echo $answer4['value']; ?>">
+				<label class="form-check-label" for="radio4">
+					<?php echo $answer4['term']; ?>
+				</label>
+			</div>
+
+			<button type="button" class="btn btn-primary" id="submit-answer-button">Submit</button>
+
+
 		</div>
-
-      <div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="<?php echo $anwer2['value']; ?>">
-			<label class="form-check-label" for="radio2">
-				<?php echo $answer2['term']; ?>
-			</label>
-		</div>
-
-      <div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="<?php echo $anwer3['value']; ?>">
-			<label class="form-check-label" for="radio3">
-				<?php echo $answer3['term']; ?>
-			</label>
-		</div>
-
-      <div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="radio4" value="<?php echo $anwer4['value']; ?>">
-			<label class="form-check-label" for="radio4">
-				<?php echo $answer4['term']; ?>
-			</label>
-		</div>
-
-      <button type="button" class="btn btn-primary" id="submit-answer-button">Submit</button>
-
-
-      
-
-
-
 
 
 
@@ -101,6 +98,24 @@
 	</div>
 
 
+	<script>
+		$(document).ready(function() {
+
+			$("#submit-answer-button").click(function() {
+
+				var correctInput = $("input[value^='c']").next().addClass("green");
+
+
+
+
+
+
+
+
+			});
+
+		});
+	</script>
 
 
 </body>
