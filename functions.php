@@ -52,18 +52,18 @@ function getMeetingDaysInsertString($days) {
 
 // inserts a class into the DB
 function insertClass($post) {
-	$dept = $post['dept'];
-	$number = $post['number'];
-	$section = $post['section'];
-	$title = $post['title'];
-	$building = $post['building'];
-	$room = $post['room'];
-	$time_start = $post['time-start'];
-	$time_end = $post['time-end'];
-	$prof_first = $post['prof-first'];
-	$prof_last = $post['prof-last'];
-	$prof_email = $post['prof-email'];
-	$term = $post['term'];
+	$dept       = $post['dept'];         // department
+	$number     = $post['number'];       // class number
+	$section    = $post['section'];      // class section
+	$title      = $post['title'];        // class title
+   $building   = $post['building'];     // building location
+	$room       = $post['room'];         // room number
+	$time_start = $post['time-start'];   // time class starts
+	$time_end   = $post['time-end'];     // time class ends
+	$prof_first = $post['prof-first'];   // professor first name
+	$prof_last  = $post['prof-last'];    // professor last name
+	$prof_email = $post['prof-email'];   // professor email
+	$term       = $post['term'];         // course term
 
 	$sql1 = "INSERT INTO Classes (dept, number, section, title, building, room, time_start, time_end, prof_first, prof_last, prof_email, term, meets_mon, meets_tues, meets_wed, meets_thurs, meets_fri) values ('$dept', $number, $section, '$title', '$building', $room, '$time_start', '$time_end', '$prof_first', '$prof_last', '$prof_email', '$term',";
 
@@ -605,7 +605,7 @@ function printAlert($message) {
    </div>";
 }
 
-// prints all the set names into the side navbar on the sets page 
+// prints all the set names into the side navbar on the sets page
 function printSetSidebar() {
 
    $pdo = dbConnect();
