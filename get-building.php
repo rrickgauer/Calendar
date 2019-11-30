@@ -63,13 +63,4 @@ echo "<div class=\"modal-header\">
    </table>
 </div>";
 
-
-
-
-
-
-
-
-
-
 ?>

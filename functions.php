@@ -102,16 +102,17 @@ function getClassInfo($id) {
 function updateClass($classID, $post) {
 
    $days = $post['days'];
+
    // figure out which days meeting
-   $mon = "n";
-   $tues = "n";
-   $wed = "n";
+   $mon   = "n";
+   $tues  = "n";
+   $wed   = "n";
    $thurs = "n";
-   $fri = "n";
+   $fri   = "n";
 
    $count = 0;
    while ($count < count($days)) {
-      if ($days[$count] == 'mon')
+      if ($days[$count]      == 'mon')
          $mon = "y";
       else if ($days[$count] == 'tues')
          $tues = "y";
@@ -131,20 +132,20 @@ function updateClass($classID, $post) {
    $sql = $pdo->prepare('UPDATE Classes SET dept=:dept, number=:number, section=:section, title=:title, building=:building, room=:room, meets_mon=:mon, meets_tues=:tues, meets_wed=:wed, meets_thurs=:thurs, meets_fri=:fri, time_start=:time_start, time_end=:time_end, prof_first=:prof_first, prof_last=:prof_last, prof_email=:prof_email, term=:term, color=:color WHERE id=:classID');
 
 
-   $dept = filter_var($post['dept'], FILTER_SANITIZE_STRING);
-   $number = filter_var($post['number'], FILTER_SANITIZE_NUMBER_INT);
-   $section = filter_var($post['section'], FILTER_SANITIZE_NUMBER_INT);
-   $title = filter_var($post['title'], FILTER_SANITIZE_STRING);
-   $building = filter_var($post['building'], FILTER_SANITIZE_STRING);
-   $room = filter_var($post['room'], FILTER_SANITIZE_NUMBER_INT);
+   $dept       = filter_var($post['dept'], FILTER_SANITIZE_STRING);
+   $number     = filter_var($post['number'], FILTER_SANITIZE_NUMBER_INT);
+   $section    = filter_var($post['section'], FILTER_SANITIZE_NUMBER_INT);
+   $title      = filter_var($post['title'], FILTER_SANITIZE_STRING);
+   $building   = filter_var($post['building'], FILTER_SANITIZE_STRING);
+   $room       = filter_var($post['room'], FILTER_SANITIZE_NUMBER_INT);
    $time_start = filter_var($post['time-start'], FILTER_SANITIZE_STRING);
-   $time_end = filter_var($post['time-end'], FILTER_SANITIZE_STRING);
+   $time_end   = filter_var($post['time-end'], FILTER_SANITIZE_STRING);
    $prof_first = filter_var($post['prof-first'], FILTER_SANITIZE_STRING);
-   $prof_last = filter_var($post['prof-last'], FILTER_SANITIZE_STRING);
+   $prof_last  = filter_var($post['prof-last'], FILTER_SANITIZE_STRING);
    $prof_email = filter_var($post['prof-email'], FILTER_SANITIZE_EMAIL);
-   $term = filter_var($post['term'], FILTER_SANITIZE_STRING);
-   $color = filter_var($post['color'], FILTER_SANITIZE_STRING);
-   $classID = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
+   $term       = filter_var($post['term'], FILTER_SANITIZE_STRING);
+   $color      = filter_var($post['color'], FILTER_SANITIZE_STRING);
+   $classID    = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
 
 
    $sql->bindParam(':dept', $dept, PDO::PARAM_STR);
@@ -199,6 +200,7 @@ function printClassLinks($term) {
 
 // prints an item card
 function printItemCard($itemID, $name, $class, $type, $dateAssigned, $dateDue, $completed, $notes) {
+
    if ($completed == 'y')
       $selector = 'item-completed';
    else if ($type == 'assignment')
@@ -213,7 +215,7 @@ function printItemCard($itemID, $name, $class, $type, $dateAssigned, $dateDue, $
       $selector = 'item-other';
 
 
-   if ($type == 'assignment') {
+   if ($type        == 'assignment') {
       $typeClass = 'badge-assignment';
    } else if ($type == 'exam') {
       $typeClass = 'badge-exam';
@@ -291,13 +293,13 @@ function getClassItemTypeCounts($classID) {
 
    $classID = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
 
-   $allCount = "SELECT count(id) from Items where class_id=$classID and completed=\"n\"";
+   $allCount        = "SELECT count(id) from Items where class_id=$classID and completed=\"n\"";
    $assignmentCount = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"assignment\"";
-   $examCount = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"exam\"";
-   $projectCount = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"project\"";
-   $quizCount = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"quiz\"";
-   $otherCount = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"other\"";
-   $completedCount = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"y\"";
+   $examCount       = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"exam\"";
+   $projectCount    = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"project\"";
+   $quizCount       = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"quiz\"";
+   $otherCount      = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"n\" and type=\"other\"";
+   $completedCount  = " UNION ALL SELECT count(id) from Items where class_id=$classID and completed=\"y\"";
 
    $sql = $allCount . $assignmentCount . $examCount . $projectCount . $quizCount . $otherCount . $completedCount;
    $results = $pdo->query($sql);
