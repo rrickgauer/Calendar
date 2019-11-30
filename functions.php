@@ -605,6 +605,7 @@ function printAlert($message) {
    </div>";
 }
 
+// prints all the set names into the side navbar on the sets page 
 function printSetSidebar() {
 
    $pdo = dbConnect();
@@ -623,10 +624,10 @@ function printSetSidebar() {
    $sql = null;
 }
 
+// prints all the set terms given the set id
 function printSetTerms($setID) {
 
     $setName = getSetName($setID);
-
 
    // initialize sql query
    $pdo = dbConnect();
@@ -695,26 +696,36 @@ function printSetTerms($setID) {
 
 }
 
-
+// updates a term and definition given the term id
 function updateTerm($termID, $term, $definition) {
-    $pdo = dbConnect();
-    $sql = $pdo->prepare('UPDATE Terms SET term=:term, definition=:definition WHERE id=:termID');
 
-    $term = filter_var($term, FILTER_SANITIZE_STRING);
-    $sql->bindParam(':term', $term, PDO::PARAM_STR);
+   // connect to database
+   $pdo = dbConnect();
 
-    $definition = filter_var($definition, FILTER_SANITIZE_STRING);
-    $sql->bindParam(':definition', $definition, PDO::PARAM_STR);
+   // prepare the sql statement
+   $sql = $pdo->prepare('UPDATE Terms SET term=:term, definition=:definition WHERE id=:termID');
 
-    $termID = filter_var($termID, FILTER_SANITIZE_NUMBER_INT);
-    $sql->bindParam(':termID', $termID, PDO::PARAM_INT);
+   // filter, sanitize, and bind the term id
+   $term = filter_var($term, FILTER_SANITIZE_STRING);
+   $sql->bindParam(':term', $term, PDO::PARAM_STR);
 
-    $sql->execute();
+   // filter, sanitize, and bind the term
+   $definition = filter_var($definition, FILTER_SANITIZE_STRING);
+   $sql->bindParam(':definition', $definition, PDO::PARAM_STR);
 
-    $sql = null;
-    $pdo = null;
+   // filter, sanitize, and bind the definition
+   $termID = filter_var($termID, FILTER_SANITIZE_NUMBER_INT);
+   $sql->bindParam(':termID', $termID, PDO::PARAM_INT);
+
+   // execute the sql statement
+   $sql->execute();
+
+   // close sql connections
+   $sql = null;
+   $pdo = null;
 }
 
+// returns the set name from a given set id
 function getSetName($setID) {
 
     // connect to database
