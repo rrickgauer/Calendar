@@ -648,7 +648,7 @@ function printSetTerms($setID) {
     <div class=\"dropdown dropleft\">
        <ion-icon name=\"more\" data-toggle=\"dropdown\" class=\"hover-blue\"></ion-icon>
        <div class=\"dropdown-menu\">
-          <a class=\"dropdown-item\" href=\"exam.php?setID=$setID\"><ion-icon name=\"copy\"></ion-icon> Exam</a>
+          <a class=\"dropdown-item\" href=\"#\"><ion-icon name=\"copy\"></ion-icon> Exam</a>
           <div class=\"dropdown-divider\"></div>
           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#update-set-name-modal\" onclick=\"updateSetName()\"><ion-icon name=\"create\"></ion-icon> Edit name</a>
           <div class=\"dropdown-divider\"></div>
@@ -824,18 +824,7 @@ function getRandomSetTermIDArray($setID) {
 }
 
 
-function getQuestion($termID, $setID, $definition) {
 
-
-
-
-
-
-
-
-
-
-}
 
 
 
