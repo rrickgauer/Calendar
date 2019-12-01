@@ -24,6 +24,32 @@
 
 		<button class="btn btn-primary" id="add-item-button">Add Item</button>
 
+
+		<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#sum-section" aria-expanded="false" aria-controls="multiCollapseExample2">Show Sum</button>
+
+		<div id="sum-section" class="collapse col-sm-12 col-md-4 col-lg-3">
+
+			<div class="form-group">
+				<label for="tax"><b>Tax:</b></label>
+				<input type="number" class="form-control" id="tax" placeholder="Enter tax" value="0.1">
+			</div>
+
+			<div class="form-group">
+				<label for="additional-funds"><b>Additional Funds:</b></label>
+				<input type="number" class="form-control" id="additional-funds" placeholder="Enter additional funds" value="0">
+			</div>
+
+			<div class="form-group">
+				<label for="sum"><b>Sum:</b></label>
+				<input type="text" class="form-control" id="sum" value="0" readonly>
+			</div>
+
+
+
+
+		</div>
+
+
 		<br><br>
 
 		<table class="table table-sm">
