@@ -14,7 +14,7 @@
 		<h1>Test</h1>
 
 
-		<form class="form"> 
+		<form class="form">
 			<input type="text" id="name" class="form-control" placeholder="Name"> <br>
 			<input type="number" id="price" class="form-control" placeholder="Price"> <br>
 			<input type="number" id="quantity" class="form-control" placeholder="Quantity"> <br>
@@ -36,7 +36,7 @@
 
 			<div class="form-group">
 				<label for="additional-funds"><b>Additional Funds:</b></label>
-				<input type="number" class="form-control" id="additional-funds" placeholder="Enter additional funds" value="0">
+				<input type="text" class="form-control" id="additional-funds" placeholder="Enter additional funds" value="0">
 			</div>
 
 			<div class="form-group">
@@ -77,7 +77,7 @@
 <script>
 
 	function addRow(name, price, quantity, totalCost) {
-		$('#table-body').append('<tr><td>' + name + '</td><td>' + price + '</td><td>' + quantity + '</td><td>' + totalCost + '</td></tr>');
+		$('#table-body').append('<tr><td>' + name + '</td><td>' + price + '</td><td>' + quantity + '</td><td class="item-total-cost">' + totalCost + '</td></tr>');
 	}
 
 	$(document).ready(function() {
@@ -90,21 +90,42 @@
 			var totalCost = price * quantity;
 
 			addRow(name, price, quantity, totalCost);
+			//$("input").val('');
 
-			$("input").val('');
-			
+			updateSum();
 
 
 		});
 
-
 	});
 
 
+	function updateSum() {
+		var amounts = document.getElementsByClassName("item-total-cost");
+
+		var runningTotal = 0;
+
+		for (var count = 0; count < amounts.length; count++) {
+			runningTotal += parseFloat(amounts[count].innerText);
+		}
+
+
+		var tax = parseFloat(document.getElementById('tax').value);
+		var additionalFunds = parseFloat(document.getElementById('additional-funds').value);
+
+		var newSum = (tax * runningTotal) + runningTotal + additionalFunds;
+
+		$("#sum").val('$' + newSum);
+	}
 
 
 
-	
+
+
+
+
+
+
 
 
 
