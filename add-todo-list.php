@@ -11,9 +11,33 @@ if (isset($_POST['list-name']) == false) {
 $name = $_POST['list-name'];
 $newID = insertTodoList($_POST['list-name']);
 
-$location = "Location: todo-lists.php?listID=$newID";
-header($location);
-exit;
+if (isset($_POST['lists']) == false || count($_POST['lists']) == 0) {
+    $location = "Location: todo-lists.php?listID=$newID";
+    header($location);
+    exit;
+}
+
+
+$pdo = dbConnect();
+
+$sql = "insert into ListItems (list_id, text, completed) SELECT 119, text, completed from ListItems where";
+
+if (count($_POST['lists']) == 1) {
+    $sql = $sql . ' list_id=' . $_POST['lists'][0];
+} else {
+
+
+
+
+
+
+
+
+
+
+}
+
+
 
 
 

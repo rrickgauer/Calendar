@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="todo-style.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
 	<title>Todo's</title>
 </head>
 
@@ -40,6 +43,11 @@
 					Lists <ion-icon name="folder"></ion-icon>
 				</button>
 
+				<select class="js-example-basic-multiple form-control" name="">
+					<option>Yo</option>
+					<option>Hi</option>
+				</select>
+
 				<div id="todo-list-section">
 
 					<?php
@@ -54,7 +62,7 @@
 
 		<!-- new todo list modal -->
 		<div class="modal fade" id="new-todo-list-modal" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header card-header">
 						<h5 class="modal-title" id="exampleModalLabel">New List</h5>
@@ -64,8 +72,54 @@
 					<!-- see add-todo-list.php -->
 					<div class="modal-body custom-bg-white">
 						<form class="form" method="post" id="new-todo-form" name="new-todo-list-form" action="add-todo-list.php">
-							<input type="text" name="list-name" id="new-todo-name-input" placeholder="List name" class="form-control" required autofocus>
+							<input type="text" name="list-name" id="new-todo-name-input" placeholder="List name" class="form-control" required autofocus><br>
+
+							<select class="js-example-basic-multiple" name="lists[]" multiple="multiple" style="width: 100%">
+
+								<?php
+
+								$pdo = dbConnect();
+
+								$sql = "SELECT Lists.id, Lists.title FROM Lists ORDER BY Lists.title";
+								$results = $pdo->query($sql);
+
+								while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+
+									$id = $row['id'];
+									$title = $row['title'];
+
+									echo "<option value=\"$id\">$title</option>";
+
+								}
+
+
+
+
+
+
+								?>
+
+							</select>
+
+							<script>
+								$(document).ready(function() {
+									$('.js-example-basic-multiple').select2();
+								});
+							</script>
+
+
+
+
+
+
+
+
+
+
 						</form>
+
+
+
 					</div>
 
 					<div class="modal-footer custom-bg-white">
