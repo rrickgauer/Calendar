@@ -43,18 +43,11 @@
 					Lists <ion-icon name="folder"></ion-icon>
 				</button>
 
-				<select class="js-example-basic-multiple form-control" name="">
-					<option>Yo</option>
-					<option>Hi</option>
-				</select>
-
 				<div id="todo-list-section">
-
 					<?php
                         if (isset($_GET['listID']))
                            printListItems($_GET['listID']);
                      ?>
-
 				</div>
 			</div>
 		</div>
@@ -73,53 +66,10 @@
 					<div class="modal-body custom-bg-white">
 						<form class="form" method="post" id="new-todo-form" name="new-todo-list-form" action="add-todo-list.php">
 							<input type="text" name="list-name" id="new-todo-name-input" placeholder="List name" class="form-control" required autofocus><br>
-
-							<select class="js-example-basic-multiple" name="lists[]" multiple="multiple" style="width: 100%">
-
-								<?php
-
-								$pdo = dbConnect();
-
-								$sql = "SELECT Lists.id, Lists.title FROM Lists ORDER BY Lists.title";
-								$results = $pdo->query($sql);
-
-								while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-
-									$id = $row['id'];
-									$title = $row['title'];
-
-									echo "<option value=\"$id\">$title</option>";
-
-								}
-
-
-
-
-
-
-								?>
-
+							<select id="list-dropdown" name="lists[]" multiple="multiple" style="width: 100%">
+								<?php printListDropdown(); ?>
 							</select>
-
-							<script>
-								$(document).ready(function() {
-									$('.js-example-basic-multiple').select2();
-								});
-							</script>
-
-
-
-
-
-
-
-
-
-
 						</form>
-
-
-
 					</div>
 
 					<div class="modal-footer custom-bg-white">
@@ -159,9 +109,6 @@
 
 	</div>
 
-
-
-
 	<script>
 		// executes addTodoItem when enter is pressed
 		$(document).on("keypress", "#add-item-text", function(e) {
@@ -169,6 +116,11 @@
 				e.preventDefault();
 				addTodoItem();
 			}
+		});
+
+		// set list dropdown to select2
+		$(document).ready(function() {
+			$('#list-dropdown').select2();
 		});
 
 		function addTodoItem() {
@@ -340,8 +292,24 @@
 		});
 	</script>
 
-
-
 </body>
 
 </html>
+
+<?php
+
+// prints the list dropdown menu in the new list modal
+function printListDropdown() {
+	$pdo = dbConnect();
+
+	$sql = "SELECT Lists.id, Lists.title FROM Lists ORDER BY Lists.title";
+	$results = $pdo->query($sql);
+
+	while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+		$id = $row['id'];
+		$title = $row['title'];
+		echo "<option value=\"$id\">$title</option>";
+	}
+}
+
+?>
