@@ -20,63 +20,63 @@ function dbConnect() {
 // returns a string to include in the insert class sql stmt
 // the string includes the days that the class is held
 function getMeetingDaysInsertString($days) {
-		$mon = "n";
-		$tues = "n";
-		$wed = "n";
-		$thurs = "n";
-		$fri = "n";
+    $mon = "n";
+    $tues = "n";
+    $wed = "n";
+    $thurs = "n";
+    $fri = "n";
 
 
-		$count = 0;
-		while ($count < count($days))
-		{
-			if ($days[$count] == 'mon')
-				$mon = "y";
-			else if ($days[$count] == 'tues')
-				$tues = "y";
-			else if ($days[$count] == 'wed')
-				$wed = "y";
-			else if ($days[$count] == 'thurs')
-				$thurs = "y";
-			else if ($days[$count] == 'fri')
-				$fri = "y";
+    $count = 0;
+    while ($count < count($days))
+    {
+      if ($days[$count] == 'mon')
+        $mon = "y";
+      else if ($days[$count] == 'tues')
+        $tues = "y";
+      else if ($days[$count] == 'wed')
+        $wed = "y";
+      else if ($days[$count] == 'thurs')
+        $thurs = "y";
+      else if ($days[$count] == 'fri')
+        $fri = "y";
 
-			$count++;
-		}
+      $count++;
+    }
 
-		$sql = " '$mon', '$tues', '$wed', '$thurs', '$fri');";
+    $sql = " '$mon', '$tues', '$wed', '$thurs', '$fri');";
 
-		return $sql;
+    return $sql;
 
 }
 
 // inserts a class into the DB
 function insertClass($post) {
-	$dept       = $post['dept'];         // department
-	$number     = $post['number'];       // class number
-	$section    = $post['section'];      // class section
-	$title      = $post['title'];        // class title
+  $dept       = $post['dept'];         // department
+  $number     = $post['number'];       // class number
+  $section    = $post['section'];      // class section
+  $title      = $post['title'];        // class title
    $building   = $post['building'];     // building location
-	$room       = $post['room'];         // room number
-	$time_start = $post['time-start'];   // time class starts
-	$time_end   = $post['time-end'];     // time class ends
-	$prof_first = $post['prof-first'];   // professor first name
-	$prof_last  = $post['prof-last'];    // professor last name
-	$prof_email = $post['prof-email'];   // professor email
-	$term       = $post['term'];         // course term
+  $room       = $post['room'];         // room number
+  $time_start = $post['time-start'];   // time class starts
+  $time_end   = $post['time-end'];     // time class ends
+  $prof_first = $post['prof-first'];   // professor first name
+  $prof_last  = $post['prof-last'];    // professor last name
+  $prof_email = $post['prof-email'];   // professor email
+  $term       = $post['term'];         // course term
 
-	$sql1 = "INSERT INTO Classes (dept, number, section, title, building, room, time_start, time_end, prof_first, prof_last, prof_email, term, meets_mon, meets_tues, meets_wed, meets_thurs, meets_fri) values ('$dept', $number, $section, '$title', '$building', $room, '$time_start', '$time_end', '$prof_first', '$prof_last', '$prof_email', '$term',";
+  $sql1 = "INSERT INTO Classes (dept, number, section, title, building, room, time_start, time_end, prof_first, prof_last, prof_email, term, meets_mon, meets_tues, meets_wed, meets_thurs, meets_fri) values ('$dept', $number, $section, '$title', '$building', $room, '$time_start', '$time_end', '$prof_first', '$prof_last', '$prof_email', '$term',";
 
 
-	if (isset($post['days']))
-		$sql2 = getMeetingDaysInsertString($post['days']);
-	else
-		$sql2 = " 'n', 'n', 'n', 'n', 'n');";
+  if (isset($post['days']))
+    $sql2 = getMeetingDaysInsertString($post['days']);
+  else
+    $sql2 = " 'n', 'n', 'n', 'n', 'n');";
 
-	$sql = $sql1 . $sql2;
+  $sql = $sql1 . $sql2;
 
-	$pdo = dbConnect();
-	$n = $pdo->exec($sql);
+  $pdo = dbConnect();
+  $n = $pdo->exec($sql);
 
    $results = $pdo->query('SELECT LAST_INSERT_ID() as "id" FROM Classes');
    $row = $results->fetch(PDO::FETCH_ASSOC);
@@ -488,21 +488,21 @@ function printListItems($listID) {
 
          if ($completed == 'y') {
             echo "<td><div class=\"checkbox tiny\">
-      			<div class=\"checkbox-container\">
-      				<input type=\"checkbox\" onclick=\"updateComplete(this)\" checked/>
-      				<div class=\"checkbox-checkmark\"></div>
-      			</div>
-      		</div></td>";
+            <div class=\"checkbox-container\">
+              <input type=\"checkbox\" onclick=\"updateComplete(this)\" checked/>
+              <div class=\"checkbox-checkmark\"></div>
+            </div>
+          </div></td>";
 
             //echo "<td><input type=\"checkbox\" class=\"todo-item-checkbox\" onclick=\"updateComplete(this)\" checked></td>";
             echo "<td class=\"todo-item-text text-line\">$text</td>";
          } else {
             echo "<td><div class=\"checkbox tiny\">
-      			<div class=\"checkbox-container\">
-      				<input type=\"checkbox\" onclick=\"updateComplete(this)\"/>
-      				<div class=\"checkbox-checkmark\"></div>
-      			</div>
-      		</div></td>";
+            <div class=\"checkbox-container\">
+              <input type=\"checkbox\" onclick=\"updateComplete(this)\"/>
+              <div class=\"checkbox-checkmark\"></div>
+            </div>
+          </div></td>";
             echo "<td class=\"todo-item-text\">$text</td>";
          }
 
@@ -639,7 +639,7 @@ function printSetTerms($setID) {
    $sql->execute();
 
    echo "<div class=\"card\" id=\"set-card\" data-setid=\"$setID\" data-setname=\"$setName\">";
-  	echo "<div class=\"card-header\">";
+    echo "<div class=\"card-header\">";
    echo "<h4>$setName";
 
     // dropdown menu
@@ -659,7 +659,7 @@ function printSetTerms($setID) {
 
     echo '</h4></div>';
 
-  	echo '<div class="card-body no-padding">';
+    echo '<div class="card-body no-padding">';
 
 
    // print table
@@ -822,10 +822,5 @@ function getRandomSetTermIDArray($setID) {
 
    return $termIDs;
 }
-
-
-
-
-
 
 ?>
