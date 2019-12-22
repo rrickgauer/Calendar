@@ -214,7 +214,7 @@ li.selected {
 
 
 #set-table tr td {
-   background-color: #EEEEEE !important;
+	background-color: #EEEEEE !important;
 }
 
 .sets-th-1 {
@@ -227,6 +227,6 @@ li.selected {
 }
 
 .no-padding {
-   margin: 0;
-   padding: 0;
+	margin: 0;
+	padding: 0;
 }
