@@ -19,24 +19,24 @@
 
             <!-- name -->
             <div class="form-group">
-   				<label for="name" class="col-form-label font-weight-bold">Name:</label>
+          <label for="name" class="col-form-label font-weight-bold">Name:</label>
                <input type="text" name="name" id="name" class="form-control" required autofocus>
-   			</div>
+        </div>
 
             <div class="form-row">
 
                <!-- class -->
                <div class="form-group col-sm-6">
-      				<label for="class" class="col-form-label font-weight-bold">Class:</label>
-   					<select class="form-control" name="class" id="class">
+              <label for="class" class="col-form-label font-weight-bold">Class:</label>
+            <select class="form-control" name="class" id="class">
                      <?php include('classes-select.php'); ?>
-   					</select>
-      			</div>
+            </select>
+            </div>
 
 
                <!-- assignment type -->
                <div class="form-group col-sm-6">
-      				<label for="type" class="col-form-label font-weight-bold">Type:</label>
+              <label for="type" class="col-form-label font-weight-bold">Type:</label>
                   <select class="form-control" name="type">
                      <option value="assignment">Assignment</option>
                      <option value="exam">Exam</option>
@@ -44,27 +44,27 @@
                      <option value="quiz">Quiz</option>
                      <option value="other">Other</option>
                   </select>
-      			</div>
+            </div>
             </div>
 
             <div class="form-row">
 
                <!-- date assigned -->
                <div class="form-group col-sm-6">
-      				<label for="date-assigned" class="col-form-label font-weight-bold">Date assigned:</label>
-               	<input class="flatpickr flatpickr-input active form-control" type="text" readonly="readonly" id="date-assigned" name="date-assigned" required>
-      			</div>
+              <label for="date-assigned" class="col-form-label font-weight-bold">Date assigned:</label>
+                <input class="flatpickr flatpickr-input active form-control" type="text" readonly="readonly" id="date-assigned" name="date-assigned" required>
+            </div>
 
                <!-- date due -->
                <div class="form-group col-sm-6">
-      				<label for="date-due" class="col-form-label font-weight-bold">Due date:</label>
+              <label for="date-due" class="col-form-label font-weight-bold">Due date:</label>
                   <input class="flatpickr flatpickr-input active form-control" type="text" readonly="readonly" id="date-due" name="date-due" required>
-      			</div>
+            </div>
             </div>
 
             <!-- completed -->
             <div class="form-group">
-   				<label for="completed" class="col-form-label font-weight-bold">Completed:</label>
+          <label for="completed" class="col-form-label font-weight-bold">Completed:</label>
                <div class="form-check-inline">
                   <label class="form-check-label" for="radio1">
                     <input type="radio" class="form-check-input" id="radio1" name="completed" value="n" checked>No
@@ -79,9 +79,9 @@
 
              <!-- notes -->
              <div class="form-group">
-   				<label for="notes" class="col-form-label font-weight-bold">Notes:</label>
+          <label for="notes" class="col-form-label font-weight-bold">Notes:</label>
                <textarea class="form-control" rows="5" id="notes" name="notes"></textarea>
-   			</div>
+        </div>
 
             <div class="float-right">
                <input type="submit" value="Submit" class="btn btn-primary" id="submit">

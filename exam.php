@@ -10,15 +10,15 @@
 <html lang="en" dir="ltr">
 
 <head>
-	<?php include('header.php'); ?>
-	<title>Exam</title>
+  <?php include('header.php'); ?>
+  <title>Exam</title>
 </head>
 
 <body>
-	<?php include('navbar.php'); ?>
-	<div class="container-fluid">
+  <?php include('navbar.php'); ?>
+  <div class="container-fluid">
 
-		<h1>Exam</h1>
+    <h1>Exam</h1>
 
 
       <?php $termIDs = getRandomSetTermIDArray($setID); ?>
@@ -26,7 +26,7 @@
 
 
 
-		<div id="question-section">
+    <div id="question-section">
 
 
          <?php
@@ -58,19 +58,19 @@
 
 
 
-	</div>
+  </div>
 
 
-	<script>
+  <script>
 
    var count = 0;
    var size = <?php echo count($termIDs); ?>;
 
       // sets the text of the correct answer green when submit button is clicked
 
-			$("#submit-answer-button").click(function() {
-				var correctInput = $("input[value^='c']").next().addClass("green");
-			});
+      $("#submit-answer-button").click(function() {
+        var correctInput = $("input[value^='c']").next().addClass("green");
+      });
 
 
 
@@ -80,7 +80,7 @@
 
 
 
-	</script>
+  </script>
 
 
 </body>
