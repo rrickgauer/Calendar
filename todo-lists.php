@@ -45,9 +45,9 @@
 
         <div id="todo-list-section">
           <?php
-                        if (isset($_GET['listID']))
-                           printListItems($_GET['listID']);
-                     ?>
+          if (isset($_GET['listID']))
+            printListItems($_GET['listID']);
+          ?>
         </div>
       </div>
     </div>
