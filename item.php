@@ -174,7 +174,7 @@ $dateDueDefault = $row['date_due_default'];
      <div class="modal-content">
 
       <div class="modal-header card-header">
-       <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+       <h5 class="modal-title" id="exampleModalLabel">Edit item</h5>
        <button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
     </div>
 
