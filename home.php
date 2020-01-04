@@ -69,7 +69,7 @@ $itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
 
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
         <canvas id="myChart" width="400" height="400"></canvas>
-        <script src="js/home-js.js"></script>
+        <script src="home-js.js"></script>
       </div>
 
 
