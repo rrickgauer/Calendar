@@ -812,4 +812,11 @@ function getRandomSetTermIDArray($setID) {
    return $termIDs;
 }
 
+function getViewItemTypeCounts() {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('SELECT * FROM View_Item_Type_Counts');
+  $sql->execute();
+  return $sql;
+}
+
 ?>
