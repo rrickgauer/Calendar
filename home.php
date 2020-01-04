@@ -8,6 +8,11 @@ $itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
 
 <head>
   <?php include('header.php'); ?>
+
+  <!-- Chart.JS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+
   <title>Home</title>
 </head>
 
@@ -20,7 +25,6 @@ $itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
     <div class="row">
 
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-
         <div class="card">
           <div class="card-header">
             <h2>Item types</h2>
@@ -61,6 +65,11 @@ $itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <script src="js/home-js.js"></script>
       </div>
 
 
