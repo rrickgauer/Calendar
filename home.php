@@ -1,10 +1,6 @@
 <?php
 include('functions.php');
-$itemTypeCounts = getViewItemTypeCounts();
-$itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
-
-$summaryCounts = getHomePageSummaryCounts();
-$summaryCounts = $summaryCounts->fetch(PDO::FETCH_ASSOC);
+$summaryCounts = getHomePageSummaryCounts()->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -23,11 +19,7 @@ $summaryCounts = $summaryCounts->fetch(PDO::FETCH_ASSOC);
   <?php include('navbar.php'); ?>
   <div class="container-fluid">
 
-
-    <h1 class="custom-font">Personal Calendar</h1>
-
-
-
+    <h1>Personal Calendar</h1>
     <div class="row">
 
       <div class="col-sm-12 col-md-6">
@@ -75,8 +67,8 @@ $summaryCounts = $summaryCounts->fetch(PDO::FETCH_ASSOC);
 
       </div>
 
+      <!-- item type count chart -->
       <div class="col-sm-12 col-md-6">
-        <!-- item type count chart -->
         <div class="card">
           <div class="card-header">
             <h2>Class items breakdown</h2>
@@ -87,18 +79,7 @@ $summaryCounts = $summaryCounts->fetch(PDO::FETCH_ASSOC);
         </div>
       </div>
 
-
     </div>
-
-
-
-
-
-
-
-
-
-
   </div>
   <script src="home-js.js"></script>
 </body>
