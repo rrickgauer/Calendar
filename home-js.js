@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $("#home-navbar-link").addClass("custom-bg-grey");
   getItemTypeCountData();
 });
 
@@ -6,9 +7,7 @@ function getItemTypeCountData() {
   $.ajax({
     type: "GET",
     url: 'get-home-page-data.php',
-    data: {
-      "type": "check"
-    },
+    data: {"type": "check"},
     success: function(response) {
       loadChart(response);
     }
@@ -18,7 +17,7 @@ function getItemTypeCountData() {
 function loadChart(data) {
   var counts = JSON.parse(data);
 
-  var ctx = document.getElementById('myChart').getContext('2d');
+  var ctx = document.getElementById('item-type-count-chart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
@@ -44,9 +43,9 @@ function loadChart(data) {
       }]
     },
     options: {
-
-
+      legend: {
+        display: false,
+      }
     }
   });
-
 }

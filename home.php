@@ -25,51 +25,18 @@ $itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
     <div class="row">
 
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+
+        <!-- item type count chart -->
         <div class="card">
           <div class="card-header">
-            <h2>Item types</h2>
+            <h3>Items</h3>
           </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3><?php echo $itemTypeCounts['count_assignments']; ?></h3>
-              <p>Assignments</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3><?php echo $itemTypeCounts['count_exams']; ?></h3>
-              <p>Exams</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3><?php echo $itemTypeCounts['count_projects']; ?></h3>
-              <p>Projects</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3><?php echo $itemTypeCounts['count_quizzes']; ?></h3>
-              <p>Quizzes</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3><?php echo $itemTypeCounts['count_other']; ?></h3>
-              <p>Other</p>
-            </div>
+          <div class="card-body">
+            <canvas id="item-type-count-chart"></canvas>
           </div>
         </div>
-      </div>
 
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <canvas id="myChart" width="400" height="400"></canvas>
-        <script src="home-js.js"></script>
+        
       </div>
 
 
@@ -85,14 +52,7 @@ $itemTypeCounts = $itemTypeCounts->fetch(PDO::FETCH_ASSOC);
 
 
   </div>
-
-  <script>
-    // set the background on the navbar to selected
-    $(document).ready(function() {
-      $("#home-navbar-link").addClass("custom-bg-grey");
-    });
-  </script>
-
+ <script src="home-js.js"></script>
 </body>
 
 </html>
