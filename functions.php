@@ -819,4 +819,11 @@ function getViewItemTypeCounts() {
   return $sql;
 }
 
+function getHomePageSummaryCounts() {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('SELECT (SELECT COUNT(*) FROM Items) AS items, (SELECT COUNT(*) FROM Classes) AS classes, (SELECT COUNT(*) FROM Lists) as lists, (SELECT COUNT(*) FROM ListItems) AS list_items');
+  $sql->execute();
+  return $sql;
+}
+
 ?>
