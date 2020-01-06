@@ -826,4 +826,11 @@ function getHomePageSummaryCounts() {
   return $sql;
 }
 
+function getAllClassData() {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('SELECT Classes.id, Classes.dept, Classes.number, Classes.title, Classes.term, COUNT(Items.id) AS item_count FROM Classes LEFT JOIN Items on Classes.id=Items.class_id GROUP BY Classes.id ORDER BY FIELD(term, "s20", "f19", "sum19"), Dept ASC, number ASC, title ASC');
+  $sql->execute();
+  return $sql;
+}
+
 ?>

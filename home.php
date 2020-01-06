@@ -1,6 +1,7 @@
 <?php
 include('functions.php');
 $summaryCounts = getHomePageSummaryCounts()->fetch(PDO::FETCH_ASSOC);
+$classes = getAllClassData();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -23,6 +24,70 @@ $summaryCounts = getHomePageSummaryCounts()->fetch(PDO::FETCH_ASSOC);
     <div class="row">
 
       <div class="col-sm-12 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2>Classes</h2>
+          </div>
+
+          <div class="card-body custom-bg-white">
+            <?php
+
+            $lineCount = 0;
+
+            echo '<div class="row">';
+
+            while ($class = $classes->fetch(PDO::FETCH_ASSOC)) {
+
+              if ($lineCount == 3) {
+                echo '</div><div class="row">';
+                $lineCount = 0;
+              }
+
+              $id     = $class['id'];
+              $dept   = $class['dept'];
+              $number = $class['number'];
+              $title  = $class['title'];
+              $term   = $class['term'];
+              $count  = $class['item_count'];
+
+              if ($term == 'f19') {
+                $termDisplay = 'Fall 2019';
+              } else if ($term == 's20') {
+                $termDisplay = 'Spring 2020';
+              } else {
+                $termDisplay = 'Summer 2019';
+              }
+
+              echo '<div class="card class-card-home col-md-12 col-lg-4">';
+              echo '<div class="card-body">';4
+              echo "<h5>$dept-$number: $title </h5>";
+              echo '<p>';
+              echo "<span class=\"badge badge-secondary\">$termDisplay</span> ";
+              echo "<span class=\"badge badge-info\">$count items</span>";
+              echo '</p>';
+              echo '</div></div>';
+
+              $lineCount++;
+            }
+
+            echo '</div>'
+
+
+
+
+            ?>
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-sm-12 col-md-6">
+        <!-- data summary -->
         <div class="card home-page-card">
           <div class="card-header">
             <h2>Data summary</h2>
@@ -65,10 +130,7 @@ $summaryCounts = getHomePageSummaryCounts()->fetch(PDO::FETCH_ASSOC);
           </div>
         </div>
 
-      </div>
-
-      <!-- item type count chart -->
-      <div class="col-sm-12 col-md-6">
+        <!-- item type count chart -->
         <div class="card">
           <div class="card-header">
             <h2>Class items breakdown</h2>
@@ -77,7 +139,11 @@ $summaryCounts = getHomePageSummaryCounts()->fetch(PDO::FETCH_ASSOC);
             <canvas id="item-type-count-chart"></canvas>
           </div>
         </div>
+
       </div>
+
+
+
 
     </div>
   </div>
