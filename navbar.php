@@ -7,7 +7,6 @@
         <ion-icon name="menu" class="custom-text-white"></ion-icon>
       </button>
 
-
       <!-- Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav navbar-nav">
@@ -27,12 +26,20 @@
             </div>
           </li>
 
-          <li class="nav-item nav-link-hover" id="add-item-navbar-link"><a class="nav-link " href="add-item.php">Add Item</a></li>
-          <li class="nav-item nav-link-hover" id="add-class-navbar-link"><a class="nav-link nav-link-hover" href="add-class.php">Add Class</a></li>
           <li class="nav-item nav-link-hover dropdown" id="todo-navbar-link"><a href="todo-lists.php" class="nav-link nav-link-hover">Todo's</a></li>
           <li class="nav-item nav-link-hover" id="calendar-navbar-link"><a class="nav-link nav-link-hover" href="calendar-list.php">Calendar</a></li>
+
+          <!-- add item and class dropdown -->
+          <li class="nav-item dropdown" id="actions-navbar-link">
+            <a class="nav-link dropdown-toggle nav-link-hover" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+             <a class="dropdown-item" href="add-item.php">Add Item</a>
+             <a class="dropdown-item" href="add-class.php">Add Class</a>
+            </div>
+          </li>
+
           <!-- <li class="nav-item nav-link-hover" id="sets-navbar-link"><a class="nav-link nav-link-hover" href="sets.php">Study Sets</a></li> -->
-          <li class="nav-item nav-link-hover" id="groceries-navbar-link"><a class="nav-link nav-link-hover" href="groceries.php">Groceries</a></li>
+          <!-- <li class="nav-item nav-link-hover" id="groceries-navbar-link"><a class="nav-link nav-link-hover" href="groceries.php">Groceries</a></li> -->
           <!-- <li class="nav-item nav-link-hover" id="test-navbar-link"><a class="nav-link nav-link-hover" href="test.php">Test Page</a></li> -->
 
         </ul>
