@@ -59,7 +59,7 @@ $classes = getAllClassData();
               }
 
               echo '<div class="card class-card-home col-md-12 col-lg-4">';
-              echo '<div class="card-body">';4
+              echo '<div class="card-body">';
               echo "<h5>$dept-$number: $title </h5>";
               echo '<p>';
               echo "<span class=\"badge badge-secondary\">$termDisplay</span> ";
