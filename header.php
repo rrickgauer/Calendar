@@ -25,3 +25,6 @@
 
 <!-- personal css -->
 <link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- favicon -->
+ <link rel="icon" href="img/icon.png" />
