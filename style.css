@@ -235,3 +235,11 @@ h1 {
   color: #393E46;
   margin: 30px;
 }
+
+body {
+  margin-bottom: 20px;
+}
+
+.class-card-home:hover {
+  cursor: pointer;
+}
