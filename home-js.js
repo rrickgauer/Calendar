@@ -1,7 +1,17 @@
 $(document).ready(function() {
+
   $("#home-navbar-link").addClass("custom-bg-grey");
   getItemTypeCountData();
+
+  $(".class-card-home").on("click", function() {
+    gotoCardPage(this);
+  });
 });
+
+function gotoCardPage(card) {
+  var id = $(card).data("id");
+  window.location.href = "class.php?cid=" + id;
+}
 
 function getItemTypeCountData() {
   $.ajax({
@@ -16,7 +26,6 @@ function getItemTypeCountData() {
 
 function loadChart(data) {
   var counts = JSON.parse(data);
-
   var ctx = document.getElementById('item-type-count-chart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',

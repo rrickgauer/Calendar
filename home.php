@@ -58,7 +58,7 @@ $classes = getAllClassData();
                 $termDisplay = 'Summer 2019';
               }
 
-              echo '<div class="card class-card-home col-md-12 col-lg-4">';
+              echo "<div class=\"card class-card-home col-md-12 col-lg-4\" data-id=\"$id\">";
               echo '<div class="card-body">';
               echo "<h5>$dept-$number: $title </h5>";
               echo '<p>';
