@@ -91,10 +91,10 @@
             <table class="table table-sm class-info-table">
               <tbody>
 
-                                <tr>
-                                    <th>Section</th>
-                                    <td><?php echo $section; ?></td>
-                                </tr>
+                <tr>
+                  <th>Section</th>
+                  <td><?php echo $section; ?></td>
+                </tr>
 
                 <tr>
                   <th>Location</th>
@@ -104,18 +104,18 @@
                   <th>Days</th>
                   <td>
                     <?php
-                                    if ($classInfo['meets_mon'] == 'y') {
-                                       echo 'Monday ';
-                                    } if ($classInfo['meets_tues'] == 'y') {
-                                       echo 'Tuesday ';
-                                    } if ($classInfo['meets_wed'] == 'y') {
-                                       echo 'Wednesday ';
-                                    } if ($classInfo['meets_thurs'] == 'y') {
-                                       echo 'Thursday ';
-                                    } if ($classInfo['meets_fri'] == 'y') {
-                                       echo 'Friday ';
-                                    }
-                                 ?>
+                      if ($classInfo['meets_mon'] == 'y') {
+                         echo 'Monday ';
+                      } if ($classInfo['meets_tues'] == 'y') {
+                         echo 'Tuesday ';
+                      } if ($classInfo['meets_wed'] == 'y') {
+                         echo 'Wednesday ';
+                      } if ($classInfo['meets_thurs'] == 'y') {
+                         echo 'Thursday ';
+                      } if ($classInfo['meets_fri'] == 'y') {
+                         echo 'Friday ';
+                      }
+                   ?>
                   </td>
                 </tr>
                 <tr>
@@ -513,7 +513,7 @@
       function deleteClass() {
 
         if (confirm("Are you sure you want to delete this class?")) {
-          var location = 'delete-class.php?classID=' + < ? php echo $classID; ? > ;
+          var location = 'delete-class.php?classID=' + <?php echo $classID; ?> ;
           window.location.href = location;
         }
       }
