@@ -41,13 +41,13 @@
 
   <div class="container">
     <?php
-            if (isset($_SESSION['item-inserted-correctly'])) {
-               if ($_SESSION['item-inserted-correctly'] == true) {
-                  printAlert("Item added!");
-                  unset($_SESSION['item-inserted-correctly']);
-               }
-            }
-         ?>
+    if (isset($_SESSION['item-inserted-correctly'])) {
+       if ($_SESSION['item-inserted-correctly'] == true) {
+          printAlert("Item added!");
+          unset($_SESSION['item-inserted-correctly']);
+       }
+    }
+   ?>
   </div>
 
   <div class="container-fluid">
