@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="todo-style.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 
+  <!-- Select2 plugin -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 
@@ -66,7 +67,7 @@
           <div class="modal-body custom-bg-white">
             <form class="form" method="post" id="new-todo-form" name="new-todo-list-form" action="add-todo-list.php">
               <input type="text" name="list-name" id="new-todo-name-input" placeholder="List name" class="form-control" required autofocus><br>
-              <select id="list-dropdown" name="lists[]" multiple="multiple" style="width: 100%">
+              <select id="list-dropdown" name="lists[]" multiple="multiple" style="width: 100%" place>
                 <?php printListDropdown(); ?>
               </select>
             </form>
@@ -120,7 +121,10 @@
 
     // set list dropdown to select2
     $(document).ready(function() {
-      $('#list-dropdown').select2();
+      $('#list-dropdown').select2({
+        placeholder: 'Merge lists',
+        allowClear: true
+      });
     });
 
     function addTodoItem() {
@@ -133,9 +137,8 @@
         }
       };
 
-
-      var listID = $("#todo-list-card").attr("data-listid");
-      var text = $("#add-item-text").val();
+      var listID = $("#todo-list-card").attr("data-listid");  // get the listID
+      var text = $("#add-item-text").val();                   // get the text to be added
 
       xhttp.open("GET", "add-todo-item.php?listID=" + listID + "&text=" + text, true);
       xhttp.send();
@@ -167,8 +170,6 @@
       xhttp.open("GET", link, true);
       xhttp.send();
     }
-
-
 
     function deleteTodoListItem(item) {
 
@@ -268,16 +269,12 @@
 
     }
 
-
-
     // collapses side nav
     $(document).ready(function() {
       $('#sidebarCollapse').on('click', function() {
         $('#sidebar').toggleClass('active');
       });
     });
-
-
 
 
     // sets the current side nav item to active
