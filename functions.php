@@ -443,14 +443,15 @@ function printListItems($listID) {
             <ion-icon name=\"more\" data-toggle=\"dropdown\" class=\"hover-blue\"></ion-icon>
             <div class=\"dropdown-menu\">
                <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#update-todo-list-name-modal\" onclick=\"updateListName()\"><ion-icon name=\"create\"></ion-icon> Edit name</a>
-               <div class=\"dropdown-divider\"></div>
-               <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteTodoList($listID)\"><ion-icon name=\"trash\"></ion-icon> Delete list</a>
+
                <div class=\"dropdown-divider\"></div>
                   <a class=\"dropdown-item\" href=\"#\" onclick=\"completeAllListItems()\"><ion-icon name=\"checkmark\"></ion-icon> Mark all complete</a>
                   <a class=\"dropdown-item\" href=\"#\" onclick=\"incompleteAllListItems()\"><ion-icon name=\"close\"></ion-icon> Mark all incomplete</a>
                <div class=\"dropdown-divider\"></div>
                   <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteCompletedListItems()\"><ion-icon name=\"git-network\"></ion-icon> Delete completed items</a>
-            </div>
+              <div class=\"dropdown-divider\"></div>
+              <a class=\"dropdown-item\" href=\"#\" onclick=\"deleteTodoList($listID)\"><ion-icon name=\"trash\"></ion-icon> Delete list</a>
+              </div>
          </div>
          </div>
       </h4>
