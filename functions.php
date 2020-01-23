@@ -240,9 +240,7 @@ function printItemCard($itemID, $name, $class, $type, $dateAssigned, $dateDue, $
 
       echo "<div class=\"card-header\"><b>$name</b>
          <div class=\"float-right\">
-            <a href=\"#\" class=\"custom-text-blue\" data-toggle=\"modal\" data-target=\"#update-item-modal\" onclick=\"getUpdateItemFormInfo($itemID)\">
-               <ion-icon name=\"create\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit item\"></ion-icon>
-            </a>
+            <a href=\"#\" class=\"custom-text-blue\" data-toggle=\"modal\" data-target=\"#update-item-modal\" onclick=\"getUpdateItemFormInfo($itemID)\"><ion-icon name=\"create\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit item\"></ion-icon></a>
             <a href=\"item.php?id=$itemID\" class=\"custom-text-blue\">
                <ion-icon name=\"open\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"See details\"></ion-icon>
             </a>
@@ -277,9 +275,9 @@ function printItemCard($itemID, $name, $class, $type, $dateAssigned, $dateDue, $
 
       echo '<div class="card-footer custom-bg-white"><div class="float-right">';
          if ($completed == 'n')
-            echo "<a href=\"completed-item.php?itemID=$itemID&classID=$class\"><button class=\"btn btn-primary\">Mark completed</button></a>";
+            echo "<a href=\"completed-item.php?itemID=$itemID&classID=$class\"><button class=\"btn btn-primary\">Complete</button></a>";
          else
-            echo "<a href=\"uncomplete-item.php?itemID=$itemID&classID=$class\"><button class=\"btn btn-secondary\">Mark incompleted</button></a>";
+            echo "<a href=\"uncomplete-item.php?itemID=$itemID&classID=$class\"><button class=\"btn btn-secondary\">Completed</button></a>";
       echo '</div></div>';
 
 
