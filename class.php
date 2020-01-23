@@ -52,93 +52,33 @@
 
   <div class="container-fluid">
 
+    <h2 class="text-center"><?php echo $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title']; ?></h2>
     <!-- class info card -->
     <div class="row">
-      <div class="col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <h4><?php echo $htmlTitle; ?>
+      <div class="col-sm-12 col-md-6">
+        <div class="text-center">
 
-              <div class="float-right">
-
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  </button>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add-item-modal">
-                      <ion-icon name="add" data-toggle="tooltip" data-placement="top" title="New item"></ion-icon>
-                      New item
-                    </a>
-
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-update-class-info">
-                      <ion-icon name="create" data-toggle="tooltip" data-placement="top" title="Edit info"></ion-icon>
-                      Edit info
-                    </a>
-
-                    <a class="dropdown-item" href="#" onclick="deleteClass()">
-                      <ion-icon name="trash"></ion-icon>
-                      Delete class
-                    </a>
-
-                  </div>
-                </div>
-
-              </div>
-            </h4>
+          <div class="class-info">
+            <p class="header">Section</p>
+            <p class="data"><?php echo $classInfo['section']; ?></p>
           </div>
-          <div class="card-body class-info-card">
-            <table class="table table-sm class-info-table">
-              <tbody>
 
-                <tr>
-                  <th>Section</th>
-                  <td><?php echo $section; ?></td>
-                </tr>
-
-                <tr>
-                  <th>Location</th>
-                  <td><?php echo $classInfo['building'] . ' ' . $classInfo['room']; ?></td>
-                </tr>
-                <tr>
-                  <th>Days</th>
-                  <td>
-                    <?php
-                      if ($classInfo['meets_mon'] == 'y') {
-                         echo 'Monday ';
-                      } if ($classInfo['meets_tues'] == 'y') {
-                         echo 'Tuesday ';
-                      } if ($classInfo['meets_wed'] == 'y') {
-                         echo 'Wednesday ';
-                      } if ($classInfo['meets_thurs'] == 'y') {
-                         echo 'Thursday ';
-                      } if ($classInfo['meets_fri'] == 'y') {
-                         echo 'Friday ';
-                      }
-                   ?>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Time</th>
-                  <td><?php echo $classInfo['time_start'] . ' - ' . $classInfo['time_end']; ?></td>
-                </tr>
-                <tr>
-                  <th>Professor</th>
-                  <td><?php echo $classInfo['prof_first'] . ' ' . $classInfo['prof_last']; ?></td>
-                </tr>
-                <tr>
-                  <th>Contact</th>
-                  <td><?php echo $classInfo['prof_email']; ?></td>
-                </tr>
-                <tr>
-                  <th>Term</th>
-                  <td><?php echo $classInfo['term']; ?></td>
-                </tr>
-
-              </tbody>
-            </table>
+          <div class="class-info">
+            <p class="header">Location</p>
+            <p class="data"><?php echo $classInfo['section']; ?></p>
           </div>
+
+          <div class="class-info">
+            <p class="header">Term</p>
+            <p class="data"><?php echo $classInfo['section']; ?></p>
+          </div>
+
+
+
+
+
         </div>
+
       </div>
     </div>
 
