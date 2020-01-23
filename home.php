@@ -34,12 +34,12 @@ $classes = getAllClassData();
             <?php
 
             $lineCount = 0;
-            echo '<div class="row">';
+            echo '<div class="card-deck">';
 
             while ($class = $classes->fetch(PDO::FETCH_ASSOC)) {
 
               if ($lineCount == 3) {
-                echo '</div><div class="row">';
+                echo '</div><div class="card-deck">';
                 $lineCount = 0;
               }
 
@@ -58,7 +58,6 @@ $classes = getAllClassData();
                 $termDisplay = 'Summer 2019';
               }
 
-              echo '<div class="col-md-12 col-lg-12 col-xl-4">';
               echo "<div class=\"card class-card-home\" data-id=\"$id\">";
               echo '<div class="card-body">';
               echo "<h5>$dept-$number: $title </h5>";
@@ -66,7 +65,7 @@ $classes = getAllClassData();
               echo "<span class=\"badge badge-secondary\">$termDisplay</span> ";
               echo "<span class=\"badge badge-info\">$count items</span>";
               echo '</p>';
-              echo '</div></div></div>';
+              echo '</div></div>';
 
               $lineCount++;
             }
