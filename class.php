@@ -6,25 +6,25 @@
    $htmlTitle = $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title'];
 
    // class information
-   $classID = $_GET['cid'];
+   $classID      = $_GET['cid'];
    $selectedDept = $classInfo['dept'];
-   $number = $classInfo['number'];
-   $section = $classInfo['section'];
-   $title = $classInfo['title'];
-   $building = $classInfo['building'];
-   $room = $classInfo['room'];
-   $time_start = $classInfo['time_start'];
-   $time_end = $classInfo['time_end'];
-   $prof_first = $classInfo['prof_first'];
-   $prof_last = $classInfo['prof_last'];
-   $prof_email = $classInfo['prof_email'];
-   $term = $classInfo['term'];
-   $meets_mon = $classInfo['meets_mon'];
-   $meets_tues = $classInfo['meets_tues'];
-   $meets_wed = $classInfo['meets_wed'];
-   $meets_thurs = $classInfo['meets_thurs'];
-   $meets_fri = $classInfo['meets_fri'];
-   $color = $classInfo['color'];
+   $number       = $classInfo['number'];
+   $section      = $classInfo['section'];
+   $title        = $classInfo['title'];
+   $building     = $classInfo['building'];
+   $room         = $classInfo['room'];
+   $time_start   = $classInfo['time_start'];
+   $time_end     = $classInfo['time_end'];
+   $prof_first   = $classInfo['prof_first'];
+   $prof_last    = $classInfo['prof_last'];
+   $prof_email   = $classInfo['prof_email'];
+   $term         = $classInfo['term'];
+   $meets_mon    = $classInfo['meets_mon'];
+   $meets_tues   = $classInfo['meets_tues'];
+   $meets_wed    = $classInfo['meets_wed'];
+   $meets_thurs  = $classInfo['meets_thurs'];
+   $meets_fri    = $classInfo['meets_fri'];
+   $color        = $classInfo['color'];
 
 ?>
 
@@ -138,6 +138,131 @@
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <br>
+
+    <!-- tabs -->
+    <?php $itemCounts = getClassItemTypeCounts($classID); ?>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+      <li class="nav-item">
+        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="assignment-tab" data-toggle="tab" href="#assignments" role="tab" aria-controls="assignments" aria-selected="false">Assignments
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="exam-tab" data-toggle="tab" href="#exams" role="tab" aria-controls="exams" aria-selected="false">Exams
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="project-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Projects
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="quiz-tab" data-toggle="tab" href="#quizzes" role="tab" aria-controls="quizzes" aria-selected="false">Quizzes
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">Other
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed
+          <span class="badge badge-primary">
+            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
+            <?php  echo $counts['count(id)'];                           // print count       ?>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <?php $results = getItemCategoryArrays($classID); ?>
+
+    <!-- tab content -->
+    <div class="tab-content" id="myTabContent">
+
+      <!-- all items -->
+      <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab">
+        <?php printItemCards($results['all']); ?>
+      </div>
+
+      <!-- assignments -->
+      <div class="tab-pane fade" id="assignments" role="tabpanel" aria-labelledby="assignment-tab">
+        <?php printItemCards($results['assignments']); ?>
+      </div>
+
+      <!-- exams -->
+      <div class="tab-pane fade" id="exams" role="tabpanel" aria-labelledby="exam-tab">
+        <?php printItemCards($results['exams']); ?>
+      </div>
+
+      <!-- projects -->
+      <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="project-tab">
+        <?php printItemCards($results['projects']); ?>
+      </div>
+
+      <!-- quizzes -->
+      <div class="tab-pane fade" id="quizzes" role="tabpanel" aria-labelledby="quiz-tab">
+        <?php printItemCards($results['quizzes']); ?>
+      </div>
+
+      <!-- other -->
+      <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+        <?php printItemCards($results['other']); ?>
+      </div>
+
+      <!-- completed items -->
+      <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
+        <?php printItemCards($results['completed']); ?>
+      </div>
+    </div>
+    <br>
+
+
+
+    <!-- Update item modal -->
+    <div class="modal" id="update-item-modal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="update-item-model-content">
+          <!-- see get-item-info.php -->
         </div>
       </div>
     </div>
@@ -361,129 +486,6 @@
             <button type="submit" form="update-class-modal-form" class="btn btn-primary">Save</button>
           </div>
 
-        </div>
-      </div>
-    </div>
-
-    <br>
-
-    <!-- tabs -->
-    <?php $itemCounts = getClassItemTypeCounts($classID); ?>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-      <li class="nav-item">
-        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="assignment-tab" data-toggle="tab" href="#assignments" role="tab" aria-controls="assignments" aria-selected="false">Assignments
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="exam-tab" data-toggle="tab" href="#exams" role="tab" aria-controls="exams" aria-selected="false">Exams
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="project-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Projects
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="quiz-tab" data-toggle="tab" href="#quizzes" role="tab" aria-controls="quizzes" aria-selected="false">Quizzes
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">Other
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed
-          <span class="badge badge-primary">
-            <?php $counts = $itemCounts->fetch(PDO::FETCH_ASSOC);       // fetch new count   ?>
-            <?php  echo $counts['count(id)'];                           // print count       ?>
-          </span>
-        </a>
-      </li>
-    </ul>
-
-    <?php $results = getItemCategoryArrays($classID); ?>
-
-    <!-- tab content -->
-    <div class="tab-content" id="myTabContent">
-
-      <!-- all items -->
-      <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab">
-        <?php printItemCards($results['all']); ?>
-      </div>
-
-      <!-- assignments -->
-      <div class="tab-pane fade" id="assignments" role="tabpanel" aria-labelledby="assignment-tab">
-        <?php printItemCards($results['assignments']); ?>
-      </div>
-
-      <!-- exams -->
-      <div class="tab-pane fade" id="exams" role="tabpanel" aria-labelledby="exam-tab">
-        <?php printItemCards($results['exams']); ?>
-      </div>
-
-      <!-- projects -->
-      <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="project-tab">
-        <?php printItemCards($results['projects']); ?>
-      </div>
-
-      <!-- quizzes -->
-      <div class="tab-pane fade" id="quizzes" role="tabpanel" aria-labelledby="quiz-tab">
-        <?php printItemCards($results['quizzes']); ?>
-      </div>
-
-      <!-- other -->
-      <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
-        <?php printItemCards($results['other']); ?>
-      </div>
-
-      <!-- completed items -->
-      <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-        <?php printItemCards($results['completed']); ?>
-      </div>
-    </div>
-    <br>
-
-
-
-    <!-- Update item modal -->
-    <div class="modal" id="update-item-modal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content" id="update-item-model-content">
-          <!-- see get-item-info.php -->
         </div>
       </div>
     </div>
