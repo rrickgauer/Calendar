@@ -244,6 +244,54 @@ body {
   cursor: pointer;
 }
 
+.class-info .header {
+  font-weight: bold;
+}
+
+.class-info p {
+  margin: 0;
+}
+
+.class-info {
+  margin-bottom: 20px;
+}
+
+.class-info-main {
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+.class-info-section.left {
+  margin-left: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
   div.col-sm-12 {
     margin-bottom: 5px;

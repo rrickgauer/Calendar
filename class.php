@@ -50,14 +50,13 @@
    ?>
   </div>
 
-  <div class="container-fluid">
+  <div class="container">
 
     <h2 class="text-center"><?php echo $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title']; ?></h2>
     <!-- class info card -->
-    <div class="row">
+    <div class="row class-info-main">
       <div class="col-sm-12 col-md-6">
-        <div class="text-center">
-
+        <div class="class-info-section left">
           <div class="class-info">
             <p class="header">Section</p>
             <p class="data"><?php echo $classInfo['section']; ?></p>
@@ -65,18 +64,48 @@
 
           <div class="class-info">
             <p class="header">Location</p>
-            <p class="data"><?php echo $classInfo['section']; ?></p>
+            <p class="data"><?php echo $classInfo['building'] . ' ' . $classInfo['room']; ?></p>
           </div>
 
           <div class="class-info">
             <p class="header">Term</p>
-            <p class="data"><?php echo $classInfo['section']; ?></p>
+            <p class="data"><?php echo $classInfo['term']; ?></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6">
+        <div class="class-info-section right">
+          <div class="class-info">
+            <p class="header">Days</p>
+            <p class="data">
+              <?php
+              if ($classInfo['meets_mon'] == 'y') {
+               echo 'Monday ';
+              } if ($classInfo['meets_tues'] == 'y') {
+               echo 'Tuesday ';
+              } if ($classInfo['meets_wed'] == 'y') {
+               echo 'Wednesday ';
+              } if ($classInfo['meets_thurs'] == 'y') {
+               echo 'Thursday ';
+              } if ($classInfo['meets_fri'] == 'y') {
+               echo 'Friday ';
+              }
+              ?>
+            </p>
           </div>
 
+          <div class="class-info">
+            <p class="header">Time</p>
+            <p class="data"><?php echo $classInfo['time_start'] . ' - ' . $classInfo['time_end']; ?></p>
+          </div>
 
+          <div class="class-info">
+            <p class="header">Professor</p>
+            <p class="data"><?php echo $classInfo['prof_first'] . ' ' . $classInfo['prof_last']; ?></p>
+            <p class="data"><?php echo $classInfo['prof_email']; ?></p>
 
-
-
+          </div>
         </div>
 
       </div>
