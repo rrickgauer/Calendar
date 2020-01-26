@@ -265,6 +265,20 @@ body {
   margin-left: 200px;
 }
 
+#pills-classItems a {
+ color: #0092CA !important;
+ font-weight: bold;
+}
+
+#pills-classItems .active {
+  background-color: #0092CA;
+  color: white !important;
+}
+
+#pills-classItems {
+  padding: 5px;
+}
+
 
 
 
