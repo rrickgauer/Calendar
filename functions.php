@@ -56,7 +56,7 @@ function insertClass($post) {
   $number     = $post['number'];       // class number
   $section    = $post['section'];      // class section
   $title      = $post['title'];        // class title
-   $building   = $post['building'];     // building location
+  $building   = $post['building'];     // building location
   $room       = $post['room'];         // room number
   $time_start = $post['time-start'];   // time class starts
   $time_end   = $post['time-end'];     // time class ends
@@ -330,6 +330,28 @@ function printItemCards($items) {
    }
 
    echo '</div>';
+}
+
+function getIncompleteClassItems($classID) {
+  $pdo = dbConnect();
+
+  $sql = $pdo->prepare('SELECT id, class_id, name, type, DATE_FORMAT(date_due, "%a, %b %D, %Y") as "date_due", DATE_FORMAT(date_assigned, "%a, %b %D, %Y") as "date_assigned", completed, notes, date_due as "date_order" FROM Items WHERE class_id=:classID AND completed = "n" ORDER BY date_order asc');
+
+  $classID = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':classID', $classID, PDO::PARAM_INT);
+  $sql->execute();
+  return $sql;
+}
+
+function getCompleteClassItems($classID) {
+  $pdo = dbConnect();
+
+  $sql = $pdo->prepare('SELECT id, class_id, name, type, DATE_FORMAT(date_due, "%a, %b %D, %Y") as "date_due", DATE_FORMAT(date_assigned, "%a, %b %D, %Y") as "date_assigned", completed, notes, date_due as "date_order" FROM Items WHERE class_id=:classID AND completed = "y" ORDER BY date_order desc');
+
+  $classID = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':classID', $classID, PDO::PARAM_INT);
+  $sql->execute();
+  return $sql;
 }
 
 // returns an array of arrays that is broken down into each itme type

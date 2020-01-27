@@ -26,7 +26,9 @@
    $meets_fri    = $classInfo['meets_fri'];
    $color        = $classInfo['color'];
 
-   $results = getItemCategoryArrays($classID);
+
+   $incompleteItems = getIncompleteClassItems($_GET['cid'])->fetchAll(PDO::FETCH_ASSOC);
+   $completeItems = getCompleteClassItems($_GET['cid'])->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -133,11 +135,11 @@
 
         <!-- open items -->
         <div class="tab-pane fade show active" id="pills-open" role="tabpanel">
-          <?php printItemCards($results['all']); ?>
+          <?php printItemCards($incompleteItems); ?>
         </div>
 
         <div class="tab-pane fade" id="pills-completed" role="tabpanel">
-          <?php printItemCards($results['completed']); ?>
+          <?php printItemCards($completeItems); ?>
         </div>
       </div>
 
