@@ -280,7 +280,10 @@ body {
 }
 
 
-
+.section-border {
+  border-top: 1px solid #EEEEEE;
+  margin: 5px;
+}
 
 
 

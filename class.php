@@ -56,76 +56,106 @@
 
     <div class="container">
 
-      <h2 class="text-center"><?php echo $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title']; ?></h2>
       <!-- class info card -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center"><?php echo $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title']; ?>
+            <div class="float-right">
 
-      <div class="row class-info-main">
-        <div class="col-sm-12 col-md-6">
-          <div class="class-info-section left">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </button>
 
-            <div class="class-info">
-              <p class="header">Section</p>
-              <p class="data"><?php echo $classInfo['section']; ?></p>
-            </div>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add-item-modal">
+                      <ion-icon name="add" data-toggle="tooltip" data-placement="top" title="New item"></ion-icon>
+                      New item
+                    </a>
 
-            <div class="class-info">
-              <p class="header">Location</p>
-              <p class="data"><?php echo $classInfo['building'] . ' ' . $classInfo['room']; ?></p>
-            </div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-update-class-info">
+                      <ion-icon name="create" data-toggle="tooltip" data-placement="top" title="Edit info"></ion-icon>
+                      Edit info
+                    </a>
 
-            <div class="class-info">
-              <p class="header">Term</p>
-              <p class="data"><?php echo $classInfo['term']; ?></p>
-            </div>
-          </div>
+                    <a class="dropdown-item" href="#" onclick="deleteClass()">
+                      <ion-icon name="trash"></ion-icon>
+                      Delete class
+                    </a>
+
+                  </div>
+                </div>
+
+              </div>
+          </h2>
         </div>
+        <div class="card-body custom-bg-white">
+          <div class="row">
+            <div class="col-6">
+              <div class="class-info-section left">
+                <div class="class-info">
+                  <p class="header">Section</p>
+                  <p class="data"><?php echo $classInfo['section']; ?></p>
+                </div>
 
-        <div class="col-sm-12 col-md-6">
+                <div class="class-info">
+                  <p class="header">Location</p>
+                  <p class="data"><?php echo $classInfo['building'] . ' ' . $classInfo['room']; ?></p>
+                </div>
 
-          <div class="class-info-section right">
-
-            <div class="class-info">
-              <p class="header">Days</p>
-              <p class="data">
-                <?php
-              if ($classInfo['meets_mon'] == 'y') {
-               echo 'Monday ';
-              } if ($classInfo['meets_tues'] == 'y') {
-               echo 'Tuesday ';
-              } if ($classInfo['meets_wed'] == 'y') {
-               echo 'Wednesday ';
-              } if ($classInfo['meets_thurs'] == 'y') {
-               echo 'Thursday ';
-              } if ($classInfo['meets_fri'] == 'y') {
-               echo 'Friday ';
-              }
-              ?>
-              </p>
+                <div class="class-info">
+                  <p class="header">Term</p>
+                  <p class="data"><?php echo $classInfo['term']; ?></p>
+                </div>
+              </div>
             </div>
 
-            <div class="class-info">
-              <p class="header">Time</p>
-              <p class="data"><?php echo $classInfo['time_start'] . ' - ' . $classInfo['time_end']; ?></p>
-            </div>
+            <div class="col-6">
+              <div class="class-info-section right">
+                <div class="class-info">
+                  <p class="header">Days</p>
+                  <p class="data">
+                    <?php
+                    if ($classInfo['meets_mon'] == 'y') {
+                     echo 'Monday ';
+                    } if ($classInfo['meets_tues'] == 'y') {
+                     echo 'Tuesday ';
+                    } if ($classInfo['meets_wed'] == 'y') {
+                     echo 'Wednesday ';
+                    } if ($classInfo['meets_thurs'] == 'y') {
+                     echo 'Thursday ';
+                    } if ($classInfo['meets_fri'] == 'y') {
+                     echo 'Friday ';
+                    }
+                    ?>
+                  </p>
+                </div>
 
-            <div class="class-info">
-              <p class="header">Professor</p>
-              <p class="data"><?php echo $classInfo['prof_first'] . ' ' . $classInfo['prof_last']; ?></p>
-              <p class="data"><?php echo $classInfo['prof_email']; ?></p>
+                <div class="class-info">
+                  <p class="header">Time</p>
+                  <p class="data"><?php echo $classInfo['time_start'] . ' - ' . $classInfo['time_end']; ?></p>
+                </div>
 
+                <div class="class-info">
+                  <p class="header">Professor</p>
+                  <p class="data"><?php echo $classInfo['prof_first'] . ' ' . $classInfo['prof_last']; ?></p>
+                  <p class="data"><?php echo $classInfo['prof_email']; ?></p>
+
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
+
+      <br>
 
       <!-- tabs -->
       <ul class="nav nav-pills justify-content-center" id="pills-classItems" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="pills-open-tab" data-toggle="pill" href="#pills-open" role="tab">Open</a>
+          <a class="nav-link active" id="pills-open-tab" data-toggle="pill" href="#pills-open" role="tab">Open <span class="badge badge-secondary">New</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-completed-tab" data-toggle="pill" href="#pills-completed" role="tab">Closed</a>
+          <a class="nav-link" id="pills-completed-tab" data-toggle="pill" href="#pills-completed" role="tab">Closed <span class="badge badge-secondary">New</span></a>
         </li>
       </ul>
 
@@ -388,7 +418,7 @@
         function deleteClass() {
 
           if (confirm("Are you sure you want to delete this class?")) {
-            var location = 'delete-class.php?classID=' + <?php echo $classID; ?> ;
+            var location = 'delete-class.php?classID=' + < ? php echo $classID; ? > ;
             window.location.href = location;
           }
         }
