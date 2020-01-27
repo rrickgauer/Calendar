@@ -6,3 +6,5 @@ php_errorlog
 
 # ds store
 .DS_Store
+
+python/
