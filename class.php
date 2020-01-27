@@ -29,6 +29,7 @@
 
    $incompleteItems = getIncompleteClassItems($_GET['cid'])->fetchAll(PDO::FETCH_ASSOC);
    $completeItems = getCompleteClassItems($_GET['cid'])->fetchAll(PDO::FETCH_ASSOC);
+   $counts = getClassItemCounts($_GET['cid'])->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -152,10 +153,10 @@
       <!-- tabs -->
       <ul class="nav nav-pills justify-content-center" id="pills-classItems" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="pills-open-tab" data-toggle="pill" href="#pills-open" role="tab">Open <span class="badge badge-secondary">New</span></a>
+          <a class="nav-link active" id="pills-open-tab" data-toggle="pill" href="#pills-open" role="tab">Open <span class="badge badge-secondary"><?php echo $counts['incomplete']; ?></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="pills-completed-tab" data-toggle="pill" href="#pills-completed" role="tab">Closed <span class="badge badge-secondary">New</span></a>
+          <a class="nav-link" id="pills-completed-tab" data-toggle="pill" href="#pills-completed" role="tab">Completed <span class="badge badge-secondary"><?php echo $counts['completed']; ?></span></a>
         </li>
       </ul>
 
@@ -175,7 +176,6 @@
 
 
       <!-- Update item modal -->
-
       <div class="modal" id="update-item-modal">
         <div class="modal-dialog modal-lg">
           <div class="modal-content" id="update-item-model-content">
@@ -418,7 +418,7 @@
         function deleteClass() {
 
           if (confirm("Are you sure you want to delete this class?")) {
-            var location = 'delete-class.php?classID=' + < ? php echo $classID; ? > ;
+            var location = 'delete-class.php?classID=' + <?php echo $classID; ?> ;
             window.location.href = location;
           }
         }

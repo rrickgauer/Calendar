@@ -18,12 +18,10 @@ $classes = getAllClassData();
 
 <body>
   <?php include('navbar.php'); ?>
-  <div class="container-fluid">
+  <div class="container">
 
     <h1>Personal Calendar</h1>
-    <div class="row">
 
-      <div class="col-sm-12 col-md-6">
         <!-- class cards -->
         <div class="card">
           <div class="card-header">
@@ -74,9 +72,9 @@ $classes = getAllClassData();
             ?>
           </div>
         </div>
-      </div>
 
-      <div class="col-sm-12 col-md-6">
+
+
         <!-- data summary -->
         <div class="card home-page-card">
           <div class="card-header">
@@ -130,9 +128,8 @@ $classes = getAllClassData();
           </div>
         </div>
 
-      </div>
 
-    </div>
+
   </div>
   <script src="home-js.js"></script>
 </body>

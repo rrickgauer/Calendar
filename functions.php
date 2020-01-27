@@ -305,6 +305,16 @@ function getClassItemTypeCounts($classID) {
    return $results;
 }
 
+function getClassItemCounts($classID) {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('SELECT (select count(*) from Items where completed = "y" and class_id=:classID) as completed, (select count(*) from Items where completed = "n" and class_id=:classID) as incomplete, (select count(*) from Items where completed = "n" and type = "assignment" and class_id=:classID) as assignments, (select count(*) from Items where completed = "n" and type = "exam" and class_id=:classID) as exam, (select count(*) from Items where completed = "n" and type = "project" and class_id=:classID) as project, (select count(*) from Items where completed = "n" and type = "quiz" and class_id=:classID) as quiz, (select count(*) from Items where completed = "n" and type = "other" and class_id=:classID) as other');
+
+  $classID = filter_var($classID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':classID', $classID, PDO::PARAM_INT);
+  $sql->execute();
+  return $sql;
+}
+
 // prints a deck of item cards from the given items array
 function printItemCards($items) {
    $count = 0;
