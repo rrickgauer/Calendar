@@ -73,7 +73,7 @@ $classes = getAllClassData();
           </div>
         </div>
 
-
+        <br>
 
         <!-- data summary -->
         <div class="card home-page-card">
@@ -118,6 +118,8 @@ $classes = getAllClassData();
           </div>
         </div>
 
+        <br>
+        
         <!-- item type count chart -->
         <div class="card">
           <div class="card-header">

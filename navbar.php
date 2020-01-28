@@ -33,14 +33,10 @@
           <li class="nav-item dropdown" id="actions-navbar-link">
             <a class="nav-link dropdown-toggle nav-link-hover" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-             <a class="dropdown-item" href="add-item.php">Add Item</a>
-             <a class="dropdown-item" href="add-class.php">Add Class</a>
+             <a class="dropdown-item" href="add-item.php" id="add-item-navbar-link">Add Item</a>
+             <a class="dropdown-item" href="add-class.php" id="add-class-navbar-link">Add Class</a>
             </div>
           </li>
-
-          <!-- <li class="nav-item nav-link-hover" id="sets-navbar-link"><a class="nav-link nav-link-hover" href="sets.php">Study Sets</a></li> -->
-          <!-- <li class="nav-item nav-link-hover" id="groceries-navbar-link"><a class="nav-link nav-link-hover" href="groceries.php">Groceries</a></li> -->
-          <!-- <li class="nav-item nav-link-hover" id="test-navbar-link"><a class="nav-link nav-link-hover" href="test.php">Test Page</a></li> -->
 
         </ul>
       </div>

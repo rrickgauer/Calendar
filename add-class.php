@@ -142,7 +142,8 @@
 
     <script>
       $(document).ready(function() {
-        $("#add-class-navbar-link").addClass("custom-bg-grey");
+        $("#add-class-navbar-link").addClass("custom-bg-white");
+        $("#actions-navbar-link").addClass("selected");
       });
     </script>
 

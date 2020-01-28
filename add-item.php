@@ -111,7 +111,8 @@
       });
 
       $(document).ready(function() {
-        $("#add-item-navbar-link").addClass("custom-bg-grey");
+        $("#add-item-navbar-link").addClass("custom-bg-white");
+        $("#actions-navbar-link").addClass("selected");
       });
     </script>
 
