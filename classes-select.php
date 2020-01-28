@@ -2,7 +2,7 @@
 
 $pdo = dbConnect();
 
-$sql = "select Classes.id, Classes.dept, Classes.number, Classes.title from Classes";
+$sql = "select Classes.id, Classes.dept, Classes.number, Classes.title from Classes ORDER BY dept asc, number asc";
 
 $results = $pdo->query($sql);
 
@@ -15,9 +15,6 @@ while ($row = $results->fetch(PDO::FETCH_ASSOC))
    } else {
       echo "<option value=\"" . $row['id'] . "\">" . $c . '</option>';
    }
-
-
-
 }
 
 

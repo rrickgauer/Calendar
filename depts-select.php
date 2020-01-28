@@ -1,11 +1,7 @@
-
-
 <?php
 
 include_once('functions.php');
-
 $pdo = dbConnect();
-
 $sql = "SELECT id FROM Depts";
 $results = $pdo->query($sql);
 
@@ -20,12 +16,6 @@ while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
       }
 
    echo ">$dept</option>";
-
-
-
 }
-
-
-
 
 ?>

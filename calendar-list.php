@@ -10,7 +10,9 @@
 
 <body>
   <?php include('navbar.php'); ?>
-  <div class="container-fluid">
+  <div class="container">
+
+    <h1>Calendar</h1>
 
     <div class="card">
       <div class="card-header">
