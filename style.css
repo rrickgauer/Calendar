@@ -292,6 +292,11 @@ body {
   justify-content: space-between;
 }
 
+#item-breakdown-card .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (max-width: 768px) {
   div.col-sm-12 {
     margin-bottom: 5px;

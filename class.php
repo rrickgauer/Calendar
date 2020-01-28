@@ -152,9 +152,20 @@
         </div>
 
         <!-- items breakdown -->
-        <div class="card">
+        <div class="card" id="item-breakdown-card">
           <div class="card-header">
             <h3>Item breakdown</h3>
+            <div class="dropdown">
+              <a class="btn btn-secondary" type="button" data-toggle="dropdown">
+                <ion-icon name="more"></ion-icon>
+              </a>
+              <div class="dropdown-menu">
+                <h6 class="dropdown-header">View</h6>
+                <button class="dropdown-item selected" type="button"><ion-icon name="grid"></ion-icon> Table</button>
+                <!-- <button class="dropdown-item" type="button"><ion-icon name="stats"></ion-icon> Chart</button> -->
+                <div class="dropdown-divider"></div>
+              </div>
+            </div>
           </div>
           <div class="card-body custom-bg-white">
             <table class="table table-sm">
