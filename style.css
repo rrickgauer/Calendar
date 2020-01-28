@@ -97,7 +97,9 @@ a {
   margin-bottom: 0;
 }
 
-.class-info-table tr, th, td {
+.class-info-table tr,
+td,
+th {
   border-color: black !important;
 }
 
@@ -178,7 +180,8 @@ td.pointer:hover {
   background-color: #393e46 !important;
 }
 
-.modal-body, .modal-footer {
+.modal-body,
+.modal-footer {
   background-color: #eeeeee !important;
 }
 
@@ -262,12 +265,12 @@ body {
 }
 
 .class-info-section.left {
-  margin-left: 200px;
+  /* margin-left: 200px; */
 }
 
 #pills-classItems a {
- color: #0092CA !important;
- font-weight: bold;
+  color: #0092CA !important;
+  font-weight: bold;
 }
 
 #pills-classItems .active {
@@ -279,39 +282,27 @@ body {
   padding: 5px;
 }
 
-
 .section-border {
   border-top: 1px solid #EEEEEE;
   margin: 5px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#class-card-top .class-title {
+  display: flex;
+  justify-content: space-between;
+}
 
 @media (max-width: 768px) {
   div.col-sm-12 {
     margin-bottom: 5px;
     margin-top: 5px;
+  }
+
+  #class-card-top .class-info-section.left {
+    margin-left: 0;
+  }
+
+  #class-card-top .class-title h2 {
+    font-size: 18px;
   }
 }

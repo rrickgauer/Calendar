@@ -57,65 +57,68 @@
 
     <div class="container">
 
-      <!-- class info card -->
-      <div class="card">
-        <div class="card-header">
-          <h2 class="text-center"><?php echo $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title']; ?>
-            <div class="float-right">
+      <h2 class="text-center"><?php echo $classInfo['dept'] . ' ' . $classInfo['number'] . ' - ' . $classInfo['title']; ?></h2>
 
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  </button>
+      <!-- class info and items break down -->
+      <div class="card-deck">
 
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add-item-modal">
-                      <ion-icon name="add" data-toggle="tooltip" data-placement="top" title="New item"></ion-icon>
-                      New item
-                    </a>
+        <!-- class info card -->
+        <div class="card" id="class-card-top">
+          <div class="card-header">
+            <span class="class-title justify-content-between">
+              <h3>Class info</h3>
+              <div class="dropdown">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <ion-icon name="more"></ion-icon>
+                </button>
 
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-update-class-info">
-                      <ion-icon name="create" data-toggle="tooltip" data-placement="top" title="Edit info"></ion-icon>
-                      Edit info
-                    </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#add-item-modal">
+                    <ion-icon name="add" data-toggle="tooltip" data-placement="top" title="New item"></ion-icon>
+                    New item
+                  </a>
 
-                    <a class="dropdown-item" href="#" onclick="deleteClass()">
-                      <ion-icon name="trash"></ion-icon>
-                      Delete class
-                    </a>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-update-class-info">
+                    <ion-icon name="create" data-toggle="tooltip" data-placement="top" title="Edit info"></ion-icon>
+                    Edit info
+                  </a>
 
+                  <a class="dropdown-item" href="#" onclick="deleteClass()">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete class
+                  </a>
+
+                </div>
+              </div>
+            </span>
+          </div>
+          <div class="card-body custom-bg-white">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="class-info-section left">
+                  <div class="class-info">
+                    <p class="header">Section</p>
+                    <p class="data"> <?php echo $classInfo['section']; ?></p>
+                  </div>
+
+                  <div class="class-info">
+                    <p class="header">Location</p>
+                    <p class="data"><?php echo $classInfo['building'] . ' ' . $classInfo['room']; ?></p>
+                  </div>
+
+                  <div class="class-info">
+                    <p class="header">Term</p>
+                    <p class="data"><?php echo $classInfo['term']; ?></p>
                   </div>
                 </div>
-
               </div>
-          </h2>
-        </div>
-        <div class="card-body custom-bg-white">
-          <div class="row">
-            <div class="col-6">
-              <div class="class-info-section left">
-                <div class="class-info">
-                  <p class="header">Section</p>
-                  <p class="data"><?php echo $classInfo['section']; ?></p>
-                </div>
 
-                <div class="class-info">
-                  <p class="header">Location</p>
-                  <p class="data"><?php echo $classInfo['building'] . ' ' . $classInfo['room']; ?></p>
-                </div>
-
-                <div class="class-info">
-                  <p class="header">Term</p>
-                  <p class="data"><?php echo $classInfo['term']; ?></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6">
-              <div class="class-info-section right">
-                <div class="class-info">
-                  <p class="header">Days</p>
-                  <p class="data">
-                    <?php
+              <div class="col-md-6 col-sm-12">
+                <div class="class-info-section right">
+                  <div class="class-info">
+                    <p class="header">Days</p>
+                    <p class="data">
+                      <?php
                     if ($classInfo['meets_mon'] == 'y') {
                      echo 'Monday ';
                     } if ($classInfo['meets_tues'] == 'y') {
@@ -128,22 +131,75 @@
                      echo 'Friday ';
                     }
                     ?>
-                  </p>
-                </div>
+                    </p>
+                  </div>
 
-                <div class="class-info">
-                  <p class="header">Time</p>
-                  <p class="data"><?php echo $classInfo['time_start'] . ' - ' . $classInfo['time_end']; ?></p>
-                </div>
+                  <div class="class-info">
+                    <p class="header">Time</p>
+                    <p class="data"><?php echo $classInfo['time_start'] . ' - ' . $classInfo['time_end']; ?></p>
+                  </div>
 
-                <div class="class-info">
-                  <p class="header">Professor</p>
-                  <p class="data"><?php echo $classInfo['prof_first'] . ' ' . $classInfo['prof_last']; ?></p>
-                  <p class="data"><?php echo $classInfo['prof_email']; ?></p>
+                  <div class="class-info">
+                    <p class="header">Professor</p>
+                    <p class="data"><?php echo $classInfo['prof_first'] . ' ' . $classInfo['prof_last']; ?></p>
+                    <p class="data"><?php echo $classInfo['prof_email']; ?></p>
 
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- items breakdown -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Item breakdown</h3>
+          </div>
+          <div class="card-body custom-bg-white">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Open</th>
+                  <th>Closed</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>Assignments</td>
+                  <td><?php echo $counts['assignments_open']; ?></td>
+                  <td><?php echo $counts['assignments_completed']; ?></td>
+                  <td><?php echo $counts['assignments']; ?></td>
+                </tr>
+                <tr>
+                  <td>Exams</td>
+                  <td><?php echo $counts['exams_open']; ?></td>
+                  <td><?php echo $counts['exams_completed']; ?></td>
+                  <td><?php echo $counts['exams']; ?></td>
+                </tr>
+                <tr>
+                  <td>Quizzes</td>
+                  <td><?php echo $counts['quizzes_open']; ?></td>
+                  <td><?php echo $counts['quizzes_completed']; ?></td>
+                  <td><?php echo $counts['quizzes']; ?></td>
+                </tr>
+                <tr>
+                  <td>Projects</td>
+                  <td><?php echo $counts['projects_open']; ?></td>
+                  <td><?php echo $counts['projects_completed']; ?></td>
+                  <td><?php echo $counts['projects']; ?></td>
+                </tr>
+                <tr>
+                  <td>Other</td>
+                  <td><?php echo $counts['other_open']; ?></td>
+                  <td><?php echo $counts['other_completed']; ?></td>
+                  <td><?php echo $counts['other']; ?></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -153,7 +209,7 @@
       <!-- tabs -->
       <ul class="nav nav-pills justify-content-center" id="pills-classItems" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="pills-open-tab" data-toggle="pill" href="#pills-open" role="tab">Open <span class="badge badge-secondary"><?php echo $counts['incomplete']; ?></span></a>
+          <a class="nav-link active" id="pills-open-tab" data-toggle="pill" href="#pills-open" role="tab">Open <span class="badge badge-secondary"><?php echo $counts['open']; ?></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="pills-completed-tab" data-toggle="pill" href="#pills-completed" role="tab">Completed <span class="badge badge-secondary"><?php echo $counts['completed']; ?></span></a>
