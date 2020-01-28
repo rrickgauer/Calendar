@@ -38,6 +38,10 @@
 
   <head>
     <?php include('header.php'); ?>
+    <!-- chart.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+
     <title><?php echo $htmlTitle; ?></title>
   </head>
 
@@ -46,13 +50,13 @@
 
     <div class="container">
       <?php
-    if (isset($_SESSION['item-inserted-correctly'])) {
+        if (isset($_SESSION['item-inserted-correctly'])) {
        if ($_SESSION['item-inserted-correctly'] == true) {
           printAlert("Item added!");
           unset($_SESSION['item-inserted-correctly']);
        }
     }
-   ?>
+      ?>
     </div>
 
     <div class="container">
@@ -63,7 +67,7 @@
       <div class="card-deck">
 
         <!-- class info card -->
-        <div class="card" id="class-card-top">
+        <div class="card" id="class-card-top" data-class-id="<?php echo $classID; ?>">
           <div class="card-header">
             <span class="class-title justify-content-between">
               <h3>Class info</h3>
@@ -155,62 +159,26 @@
         <div class="card" id="item-breakdown-card">
           <div class="card-header">
             <h3>Item breakdown</h3>
-            <div class="dropdown">
+            <div class="dropdown dropleft">
               <a class="btn btn-secondary" type="button" data-toggle="dropdown">
                 <ion-icon name="more"></ion-icon>
               </a>
               <div class="dropdown-menu">
                 <h6 class="dropdown-header">View</h6>
-                <button class="dropdown-item selected" type="button"><ion-icon name="grid"></ion-icon> Table</button>
-                <!-- <button class="dropdown-item" type="button"><ion-icon name="stats"></ion-icon> Chart</button> -->
+                <button class="dropdown-item selected" type="button" onclick="updateView('chart')">
+                  <ion-icon name="stats"></ion-icon> Chart
+                </button>
+                <button class="dropdown-item" type="button" onclick="updateView('table')">
+                  <ion-icon name="grid"></ion-icon> Table
+                </button>
                 <div class="dropdown-divider"></div>
               </div>
             </div>
           </div>
-          <div class="card-body custom-bg-white">
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th>Type</th>
-                  <th>Open</th>
-                  <th>Closed</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
 
-                <tr>
-                  <td>Assignments</td>
-                  <td><?php echo $counts['assignments_open']; ?></td>
-                  <td><?php echo $counts['assignments_completed']; ?></td>
-                  <td><?php echo $counts['assignments']; ?></td>
-                </tr>
-                <tr>
-                  <td>Exams</td>
-                  <td><?php echo $counts['exams_open']; ?></td>
-                  <td><?php echo $counts['exams_completed']; ?></td>
-                  <td><?php echo $counts['exams']; ?></td>
-                </tr>
-                <tr>
-                  <td>Quizzes</td>
-                  <td><?php echo $counts['quizzes_open']; ?></td>
-                  <td><?php echo $counts['quizzes_completed']; ?></td>
-                  <td><?php echo $counts['quizzes']; ?></td>
-                </tr>
-                <tr>
-                  <td>Projects</td>
-                  <td><?php echo $counts['projects_open']; ?></td>
-                  <td><?php echo $counts['projects_completed']; ?></td>
-                  <td><?php echo $counts['projects']; ?></td>
-                </tr>
-                <tr>
-                  <td>Other</td>
-                  <td><?php echo $counts['other_open']; ?></td>
-                  <td><?php echo $counts['other_completed']; ?></td>
-                  <td><?php echo $counts['other']; ?></td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- chart or table goes here -->
+          <div class="card-body custom-bg-white">
+            <canvas id="myChart"></canvas>
           </div>
         </div>
       </div>
@@ -334,7 +302,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header card-header">
-              <h4 class="modal-title"><?php echo $htmlTitle; ?></h4>
+              <h4 class="modal-title">Edit class info</h4>
               <button type="button" class="close custom-text-white" data-dismiss="modal">&times;</button>
             </div>
 
@@ -461,58 +429,11 @@
         </div>
       </div>
 
-      <script>
-        // tool tip for add item
-        $(document).ready(function() {
-          $('[data-toggle="tooltip"]').tooltip();
-        });
-
-        // updates the info in the update-item-info form modal
-        function getUpdateItemFormInfo(classID) {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              var e = this.responseText;
-              $("#update-item-model-content").html(e);
-            }
-          };
-
-          var id = $();
-          xhttp.open("GET", "get-item-info.php?q=" + classID, true);
-          xhttp.send();
-        }
-
-        function deleteClass() {
-
-          if (confirm("Are you sure you want to delete this class?")) {
-            var location = 'delete-class.php?classID=' + <?php echo $classID; ?> ;
-            window.location.href = location;
-          }
-        }
-
-        // datepicker format
-        flatpickr("#date-assigned-new", {
-          altInput: true,
-          altFormat: "F j, Y",
-          dateFormat: "Y-m-d",
-          defaultDate: "today"
-        });
-
-        flatpickr("#date-due-new", {
-          altInput: true,
-          altFormat: "F j, Y",
-          dateFormat: "Y-m-d",
-        });
-
-        // set the background on the navbar to selected
-        $(document).ready(function() {
-          $("#class-navbar-link").addClass("custom-bg-grey");
-        });
-      </script>
-
-
       <!-- last div -->
     </div>
+
+
+    <script src="class-js.js"></script>
 
   </body>
 

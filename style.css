@@ -297,6 +297,17 @@ body {
   justify-content: space-between;
 }
 
+
+.dropdown-menu .dropdown-item.selected {
+  background-color: #EEEEEE;
+}
+
+table tr.row-sum {
+  border-top: 3px double black;
+}
+
+
+
 @media (max-width: 768px) {
   div.col-sm-12 {
     margin-bottom: 5px;
