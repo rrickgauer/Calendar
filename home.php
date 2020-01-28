@@ -124,6 +124,7 @@ $classes = getAllClassData();
             <h2>Class items breakdown</h2>
           </div>
           <div class="card-body custom-bg-white">
+            <!-- see get-home-page-data.php -->
             <canvas id="item-type-count-chart"></canvas>
           </div>
         </div>
