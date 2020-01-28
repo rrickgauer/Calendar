@@ -117,10 +117,6 @@ th {
   cursor: pointer;
 }
 
-.table-custom tr:nth-child(even) {
-  /* background-color: #f0f2f5; */
-}
-
 #todo-list-card-body {
   margin: 0;
   padding: 0;
@@ -241,7 +237,7 @@ h1 {
 }
 
 body {
-  margin-bottom: 20px;
+  margin-bottom: 21px;
 }
 
 .class-card-home:hover {
@@ -250,6 +246,14 @@ body {
 
 .class-info .header {
   font-weight: bold;
+}
+
+.class-info .header .text {
+  font-size: 20px;
+}
+
+.class-info .data {
+  margin-left: 22px;
 }
 
 .class-info p {
@@ -263,10 +267,6 @@ body {
 .class-info-main {
   margin-left: 100px;
   margin-top: 50px;
-}
-
-.class-info-section.left {
-  /* margin-left: 200px; */
 }
 
 #pills-classItems a {
@@ -298,7 +298,6 @@ body {
   justify-content: space-between;
 }
 
-
 .dropdown-menu .dropdown-item.selected {
   background-color: #EEEEEE;
 }
@@ -307,7 +306,50 @@ table tr.row-sum {
   border-top: 3px double black;
 }
 
+.class-info-new .info p {
+  margin: 0;
+}
 
+.class-info-new {
+  margin-bottom: 20px;
+}
+
+.class-info-new .icon {
+  margin-top: 7px;
+}
+
+.class-info-new {
+  display: inline-flex;
+}
+
+.class-info-new .info {
+  vertical-align: top;
+  margin-left: 5px;
+}
+
+.class-info-new .header {
+  margin-left: 0;
+}
+
+.class-info-new .header {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.class-info-new .icon ion-icon {
+  background-color: #0092CA;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+h2.class-title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 48px;
+}
 
 @media (max-width: 768px) {
   div.col-sm-12 {

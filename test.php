@@ -13,53 +13,52 @@
   <body>
     <?php include('navbar.php'); ?>
 
-    <div class="container-fluid">
+    <div class="container">
       <h1>Test</h1>
 
-       
-      <form class="form" action="test.php" method="post">
+      <div class="card">
+        <div class="card-header">
+          <h3>This is the test card</h3>
+        </div>
 
-        <select class="js-example-basic-multiple" name="lists[]" multiple="multiple" style="width: 100%">
-          <?php
-        $pdo = dbConnect();
-        $sql = "SELECT Lists.id, Lists.title FROM Lists ORDER BY Lists.title";
-        $results = $pdo->query($sql);
-        while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-          $id = $row['id'];
-          $title = $row['title'];
-          echo "<option value=\"$id\">$title</option>";
-        }
-        ?>
-        </select>
-
-        <br><br><input type="submit" value="submit" class="btn btn-primary">
-
-      </form>
+        <div class="card-body custom-bg-white">
 
 
-      <?php
+          <div class="class-info-new">
+            <div class="icon">
+              <ion-icon name="filing"></ion-icon>
+            </div>
+            <div class="info">
+              <p class="header"><span class="text">&nbsp;Section</span></p>
+              <p class="data">Fall 2019</p>
+            </div>
+          </div>
 
-        if(isset($_POST['lists'])) {
+          <div class="class-info-new">
+            <div class="icon">
+              <ion-icon name="time"></ion-icon>
+            </div>
+            <div class="info">
+              <p class="header"><span class="text">&nbsp;Time</span></p>
+              <p class="data">11:00AM - 11:50AM</p>
+            </div>
+          </div>
 
-          $count = 0;
+        </div>
 
-          while ($count < count($_POST['lists'])) {
-            echo $_POST['lists'][$count] . '<br>';
-            $count++;
-          }
-        }
+      </div>
 
-      ?>
+
+
+
+
+
+
 
 
     </div>
 
 
-    <script>
-      $(document).ready(function() {
-        $('.js-example-basic-multiple').select2();
-      });
-    </script>
   </body>
 
 
