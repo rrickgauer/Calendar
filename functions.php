@@ -543,22 +543,11 @@ function printListItems($listID) {
          $count++;
 
       }
-
-
-
-
-
-
-
-         echo '</table></div>';
-
+   echo '</table></div>';
    echo '</div>';
 
    $pdo = null;
    $sql = null;
-
-
-
 }
 
 // sets a todo list item as complete
@@ -862,6 +851,38 @@ function getAllClassData() {
   $sql = $pdo->prepare('SELECT Classes.id, Classes.dept, Classes.number, Classes.title, Classes.term, COUNT(Items.id) AS item_count FROM Classes LEFT JOIN Items on Classes.id=Items.class_id GROUP BY Classes.id ORDER BY FIELD(term, "s20", "f19", "sum19"), Dept ASC, number ASC, title ASC');
   $sql->execute();
   return $sql;
+}
+
+function isItemCompleted($itemID) {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('SELECT Items.id FROM Items WHERE id=:itemID AND completed="y" LIMIT 1');
+  $itemID = filter_var($itemID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+  $sql->execute();
+
+  if ($sql->rowCount() == 1) {
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+
+function setItemComplete($itemID) {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('UPDATE Items SET completed="y" WHERE id=:itemID');
+  $itemID = filter_var($itemID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+  $sql->execute();
+}
+
+function setItemIncomplete($itemID) {
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('UPDATE Items SET completed="n" WHERE id=:itemID');
+  $itemID = filter_var($itemID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+  $sql->execute();
 }
 
 ?>

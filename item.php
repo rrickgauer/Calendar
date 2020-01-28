@@ -311,14 +311,13 @@ $dateDueDefault      = $row['date_due_default'];
                 <label for="list" class="col-form-label font-weight-bold">List:</label>
                 <select class="form-control" name="list" id="list">
                   <?php
+                     while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                        $id = $row['id'];
+                        $title = $row['title'];
 
-                           while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
-                              $id = $row['id'];
-                              $title = $row['title'];
-
-                              echo "<option value=\"$id\">$title</option>";
-                           }
-                        ?>
+                        echo "<option value=\"$id\">$title</option>";
+                     }
+                   ?>
                 </select>
               </div>
             </form>

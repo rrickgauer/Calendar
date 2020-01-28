@@ -46,8 +46,6 @@
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -56,8 +54,6 @@
     <div class="card-body custom-bg-white">
       <?php include('get-calendar-list.php'); ?>
     </div>
-
-
 
     <!-- end card -->
   </div>
@@ -192,6 +188,23 @@
       xhttp.open("GET", "get-calendar-list.php", true);
       xhttp.send();
     });
+
+    function updateItem(itemID) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var table = this.responseText;
+          $(".card-body").html(table);
+        }
+      };
+
+      var weekNumber = $("#list-calendar-table").attr("data-yearweek");
+      var link = 'update-item.php?itemID=' + itemID + '&weeknum=' + weekNumber;
+      xhttp.open("GET", link, true);
+      xhttp.send();
+
+
+    }
 
     function gotoItem(itemID) {
       window.location.href = 'item.php?id=' + itemID;

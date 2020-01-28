@@ -29,8 +29,6 @@ if (isset($_GET['weeknum'])) {
 
 $results = $pdo->query($sql);
 
-
-
 $curDay = 0;
 while($row = $results->fetch(PDO::FETCH_ASSOC))
 {
@@ -55,22 +53,12 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
       }
 
       echo '<tr class="list-table-date-row">';
-      echo '<th colspan="3">' . $dayName . '<div class="float-right">' . $row['date_due'] . '</div></th></tr>';
+      echo '<th colspan="4">' . $dayName . '<div class="float-right">' . $row['date_due'] . '</div></th></tr>';
    }
 
-
-
-
    echo '<tr class="item-row">';
-
    $displayTitle = $row['dept'] . ' ' . $row['number'];
-
-
-   //echo '<td><a href="class.php?cid=' . $row['cid'] . '">'. '<ion-icon class="icon-class" name="radio-button-on" style="color:' . $row['color'] . '"></ion-icon></td>';
-
    echo '<td><a href="class.php?cid=' . $row['cid'] . '">' . $displayTitle   . '</td>';
-
-
 
    $name = $row['name'];
    $itemID = $row['id'];
@@ -78,12 +66,9 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
    // item name
    if ($row['completed'] == 'y') {
       echo "<td class=\"text-line pointer\" onclick=\"gotoItem($itemID)\">$name</td>";
-      // echo '<td class="text-line" onclick="">' . $row['name'] . '</td>';
    } else {
       echo "<td class=\"pointer\" onclick=\"gotoItem($itemID)\">$name</td>";
    }
-
-
 
    if ($row['type'] == 'assignment') {
       $badgeClass = 'badge-assignment';
@@ -97,20 +82,16 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
       $badgeClass = 'badge-other';
    }
 
-
-
    echo "<td><span class=\"badge $badgeClass\">" . $row['type'] . '</span></td>';
 
+  if ($row['completed'] == 'y') {
+    echo "<td><button class=\"btn btn-sm btn-secondary float-right\" onclick=\"updateItem($itemID)\">Completed</button></td>";
+  } else {
+    echo "<td><button class=\"btn btn-sm btn-primary float-right\" onclick=\"updateItem($itemID)\">Complete</button></td>";
+  }
+
+
    $completed = $row['completed'];
-
-
-
-
-
-
-
-
-
    echo '</tr>';
 
 
