@@ -364,4 +364,8 @@ h2.class-title {
   #class-card-top .class-title h2 {
     font-size: 18px;
   }
+
+  h2.class-title {
+    font-size: 30px;
+  }
 }
