@@ -87,7 +87,7 @@ function insertClass($post) {
 function getClassInfo($id) {
    $pdo = dbConnect();
 
-   $sql = $pdo->prepare('SELECT `id`, `dept`, `number`, `section`, upper(`title`) as "title", `building`, `room`, `meets_mon`, `meets_tues`, `meets_wed`, `meets_thurs`, `meets_fri`, time_format(`time_start`, "%h:%i%p") as "time_start", time_format(`time_end`, "%h:%i%p") as "time_end", upper(`prof_first`) as "prof_first", upper(`prof_last`) as "prof_last", lower(`prof_email`) as "prof_email", `prof_office_hours`, `term`, time_start as "time_start_original", time_end as "time_end_original", color from Classes WHERE id=:id');
+   $sql = $pdo->prepare('SELECT `id`, `dept`, `number`, `section`, upper(`title`) as "title", `building`, `room`, `meets_mon`, `meets_tues`, `meets_wed`, `meets_thurs`, `meets_fri`, time_format(`time_start`, "%h:%i%p") as "time_start", time_format(`time_end`, "%h:%i%p") as "time_end", prof_first, prof_last, lower(`prof_email`) as "prof_email", `prof_office_hours`, `term`, time_start as "time_start_original", time_end as "time_end_original", color from Classes WHERE id=:id');
 
    $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
    $sql->bindParam(':id', $id, PDO::PARAM_INT);
